@@ -200,7 +200,7 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
-  font-family: 'Saira Extra Condensed', sans-serif;
+  font-family: var(--main-font), sans-serif;
   overflow-x: hidden;
 }
 
@@ -490,14 +490,16 @@ h1 {
   /* Mobile
  */
 
+  /*
   body {
-    //overflow-x: hidden;
-    //  position: absolute;
-    //  width: 100%;
-    //  height: 100%;
-    //  margin: 0;
-    //  padding: 0;
+    overflow-x: hidden;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
   }
+  */
   .flex-column-sm {
     flex-direction: column !important; /* Column layout */
   }

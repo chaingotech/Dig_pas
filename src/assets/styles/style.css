@@ -1,13 +1,24 @@
 @font-face {
-  font-family: 'icomoon';
-  src:  url('../fonts/icomoon.eot?dc9wu2');
-  src:  url('../fonts/icomoon.eot?dc9wu2#iefix') format('embedded-opentype'),
-    url('../fonts/icomoon.ttf?dc9wu2') format('truetype'),
-    url('../fonts/icomoon.woff?dc9wu2') format('woff'),
-    url('../fonts/icomoon.svg?dc9wu2#icomoon') format('svg');
-  font-weight: normal;
-  font-style: normal;
-  font-display: block;
+    font-family: 'icomoon';
+    src:  url('../fonts/icomoon.eot?dc9wu2');
+    src:  url('../fonts/icomoon.eot?dc9wu2#iefix') format('embedded-opentype'),
+        url('../fonts/icomoon.ttf?dc9wu2') format('truetype'),
+        url('../fonts/icomoon.woff?dc9wu2') format('woff'),
+        url('../fonts/icomoon.svg?dc9wu2#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+@font-face {
+    font-family: 'RieuxMinus';
+    src: url('../fonts/RieuxMinus.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+:root {
+    --main-font: "RieuxMinus";
 }
 
 [class^="icon-"], [class*=" icon-"] {
