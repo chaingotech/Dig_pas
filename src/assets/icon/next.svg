@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="54px" height="54px" viewBox="0 0 54 54" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>next</title>
+    <g id="GOLD" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="modal-imagen" transform="translate(-1190.000000, -345.000000)">
+            <g id="next" transform="translate(1190.000000, 345.000000)">
+                <circle id="Oval" fill="#2F130D" opacity="0.800000012" cx="27" cy="27" r="27"></circle>
+                <path d="M28,34 C27.5497955,34 27.1190391,33.817587 26.8070408,33.4943495 L16.4622676,22.7888059 C15.8283399,22.133272 15.8490294,21.0902649 16.5081984,20.4598489 C17.1669535,19.8294328 18.2146722,19.8496094 18.8481861,20.505555 L28,29.9766196 L37.1518139,20.505555 C37.784914,19.8500212 38.8326327,19.8294328 39.4918016,20.4598489 C40.1509706,21.0902649 40.1716601,22.133272 39.5377324,22.7888059 L29.1929592,33.4943495 C28.8809609,33.817587 28.4502045,34 28,34" id="chevron-down" fill="#FFFFFF" transform="translate(28.000000, 27.000000) rotate(-90.000000) translate(-28.000000, -27.000000) "></path>
+            </g>
+        </g>
+    </g>
+</svg>

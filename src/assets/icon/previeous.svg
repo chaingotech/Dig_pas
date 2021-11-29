@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="54px" height="54px" viewBox="0 0 54 54" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>previeous</title>
+    <g id="GOLD" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.5">
+        <g id="modal-imagen" transform="translate(-36.000000, -345.000000)">
+            <g id="previeous" transform="translate(36.000000, 345.000000)">
+                <circle id="Oval" fill="#2F130D" opacity="0.800000012" cx="27" cy="27" r="27"></circle>
+                <path d="M25,34 C24.5497955,34 24.1190391,33.817587 23.8070408,33.4943495 L13.4622676,22.7888059 C12.8283399,22.133272 12.8490294,21.0902649 13.5081984,20.4598489 C14.1669535,19.8294328 15.2146722,19.8496094 15.8481861,20.505555 L25,29.9766196 L34.1518139,20.505555 C34.784914,19.8500212 35.8326327,19.8294328 36.4918016,20.4598489 C37.1509706,21.0902649 37.1716601,22.133272 36.5377324,22.7888059 L26.1929592,33.4943495 C25.8809609,33.817587 25.4502045,34 25,34" id="chevron-down" fill="#FFFFFF" transform="translate(25.000000, 27.000000) scale(-1, 1) rotate(-90.000000) translate(-25.000000, -27.000000) "></path>
+            </g>
+        </g>
+    </g>
+</svg>

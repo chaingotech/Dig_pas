@@ -1,0 +1,349 @@
+<template>
+
+  <aside class="d-flex align-items-end flex-column w-100 " id="guitar-detail">
+<!--    <div class="d-flex align-self-center py-4">-->
+<!--      <span class="px-3 py-1 bg-white" style="border: solid 2px white"> Front</span>-->
+<!--      <span class="px-3 py-1 text-white" style="border: solid 2px white">Back</span>-->
+<!--    </div>-->
+    <section class="d-flex align-items-sm-end w-100 justify-content-sm-between">
+      <section class="px-2 bg-white">
+        <div class="d-flex flex-column mr-sm-5  mr-sm-auto bg-white position-relative  ">
+
+          <img v-if="active == null" alt="" class="guitar-img bg-white m-5" src="@/assets/guitar/full.svg">
+          <img v-if="active != null" alt="" class="guitar-img bg-white m-5" :src="active.img">
+
+
+          <div v-for="item in components" :key="item.title"
+               class="items-components"
+               @click="activeComponent(item)"
+               :class="{ active: active === item, [item.title]:true }">
+            <div class="outer-circle">
+              <div class="inner-circle">
+              </div>
+            </div>
+            <span>{{ item.title }}</span>
+          </div>
+        </div>
+
+      </section>
+      <section id="components-guitar">
+
+        <ul v-if="isWeb()">
+          <li v-for="item in components" :key="item.title"
+
+              @click="activeComponent(item)"
+              :class="{ active: active === item }">
+            <span>{{ item.title }}</span>
+          </li>
+
+        </ul>
+        <ul v-else>
+          <li v-for="item in components" :key="item.title"
+              data-toggle="modal" data-target="#exampleModal"
+              data-whatever="@getbootstrap"
+              @click="activeComponent(item)"
+              :class="{ active: active === item }">
+            <span>{{ item.title }}</span>
+          </li>
+        </ul>
+      </section>
+    </section>
+    <!---->
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content p-0 m-0">
+          <div class="modal-body p-0 m-0">
+            <Sides class="p-4"/>
+            <div class="close-dialog py-4" data-dismiss="modal">Close</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </aside>
+
+</template>
+
+<script lang="ts">
+import {Options, Vue} from 'vue-class-component';
+import Sides from "@/components/Sides.vue";
+
+@Options({
+  components: {Sides}
+})
+export default class Guitar extends Vue {
+
+  active: any = null;
+  components: { title: string, img: string }[] = [
+    {title: "headplate", img: require('@/assets/guitar/headplate.svg')},
+    {title: "fingerboard", img: require('@/assets/guitar/fingerboard.svg')},
+    {title: "heel", img: require('@/assets/guitar/heel.svg')},
+    {title: "bridge", img: require('@/assets/guitar/bridge.svg')},
+    {title: "top", img: require('@/assets/guitar/top.svg')},
+    {title: "neck", img: require('@/assets/guitar/neck.svg')},
+    {title: "back", img: require('@/assets/guitar/back.svg')},
+    {title: "sides", img: require('@/assets/guitar/sides.svg')}
+  ];
+
+
+  isWeb(): boolean {
+    return window.innerWidth > 500;
+  }
+
+  activeComponent(item: { title: string, img: string }): void {
+    this.active = item == this.active ? null : item;
+  }
+}
+</script>
+
+<style lang="scss">
+
+#guitar-detail {
+  cursor: pointer;
+}
+
+#components-guitar {
+  ul {
+    list-style-type: none;
+    text-transform: capitalize;
+    color: white;
+    margin: 0;
+    padding: 0;
+
+    li {
+      padding: 10px 20px;
+      width: 152px;
+
+      &.active {
+        color: black;
+        //background: white; z
+        border: 4px solid var(--main-bg-color);
+        background: url(../assets/rectangle-selected.svg) !important;
+        background-size: cover; /* <------ */
+        background-repeat: no-repeat;
+        background-position: center center;
+        width: 152px;
+
+
+      }
+
+    }
+
+  }
+}
+
+#guitar-detal {
+  justify-content: space-between;
+}
+
+.close-dialog {
+  background: rgba(#6A3534, .1);
+  color: var(--main-bg-color);
+  text-transform: uppercase;
+  text-align: center;
+  width: 100%;
+}
+
+.guitar-img {
+  width: 230px;
+  //min-width: 143px;
+}
+
+.border-dotted-line {
+  border-bottom: 2px dashed rgba(#6A3534, 0.5);
+}
+
+
+.outer-circle {
+  background: rgba(#6A3534, 0.2);
+  border-radius: 50%;
+  height: 20px;
+  width: 20px;
+  position: relative;
+
+  .inner-circle {
+    position: absolute;
+    background: var(--main-bg-color);
+    border-radius: 50%;
+    height: 10px;
+    width: 10px;
+
+    top: 50%;
+    left: 50%;
+    margin: -5px 0px 0px -5px;
+
+  }
+}
+
+.outer-circle-left {
+  position: absolute;
+  bottom: -10px;
+  left: -10px;
+}
+
+.outer-circle-right {
+  position: absolute;
+  bottom: -10px;
+  right: -10px;
+}
+
+.items-components {
+  position: absolute;
+  text-transform: capitalize;
+  color: rgba(#6A3534, 0.5) !important;
+
+  .outer-circle {
+    opacity: .5;
+  }
+
+  &.active {
+    .outer-circle {
+      opacity: 1;
+    }
+
+    span {
+      color: #6A3534;
+      font-weight: bold;
+    }
+
+    border-color: #6A3534;
+  }
+
+  &.headplate {
+    right: 0;
+    top: 10%;
+    width: 30%;
+    text-align: right;
+    @extend .border-dotted-line;
+
+    .outer-circle {
+      @extend .outer-circle-left;
+    }
+  }
+
+  &.neck {
+    left: 0;
+    top: 12%;
+    width: 65%;
+    text-align: left;
+    @extend .border-dotted-line;
+
+    .outer-circle {
+      @extend .outer-circle-right;
+    }
+  }
+
+  &.fingerboard {
+    left: 0;
+    top: 20%;
+    width: 60%;
+    text-align: left;
+    @extend .border-dotted-line;
+
+    .outer-circle {
+      @extend .outer-circle-right;
+    }
+  }
+
+  &.heel {
+    right: 0;
+
+    top: 45%;
+    width: 40%;
+    text-align: right;
+    @extend .border-dotted-line;
+
+    .outer-circle {
+      @extend .outer-circle-left;
+    }
+  }
+
+  &.sides {
+    right: 0;
+    top: 55%;
+    width: 20%;
+    text-align: right;
+    @extend .border-dotted-line;
+
+    .outer-circle {
+      @extend .outer-circle-left;
+    }
+  }
+
+  &.bridge {
+    right: 0;
+    text-align: right;
+    top: 72%;
+    width: 50%;
+    @extend .border-dotted-line;
+
+    .outer-circle {
+      @extend .outer-circle-left;
+    }
+  }
+
+  &.top {
+    right: 0;
+
+    top: 80%;
+    width: 40%;
+    text-align: right;
+    @extend .border-dotted-line;
+
+    .outer-circle {
+      @extend .outer-circle-left;
+    }
+  }
+
+  &.back {
+    left: 0;
+    top: 80%;
+    width: 40%;
+    text-align: left;
+    @extend .border-dotted-line;
+
+    .outer-circle {
+      @extend .outer-circle-right;
+    }
+  }
+
+}
+
+@media screen and (max-width: 600px) {
+
+  .guitar-img {
+    //width: 230px;
+    width: 143px;
+  }
+  #components-guitar {
+    ul {
+      li {
+        width: auto;
+        padding: 10px 30px;
+
+        &.active {
+          border: 4px solid var(--main-bg-color);
+          background: white !important;
+          width: auto;
+        }
+      }
+
+    }
+  }
+
+  .side-indo {
+    width: 100% !important;
+    height: 100% !important;
+
+    img {
+      position: relative !important;
+      width: 100% !important;
+    }
+  }
+}
+
+
+</style>

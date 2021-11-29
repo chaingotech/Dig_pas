@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="18px" height="18px" viewBox="0 0 18 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>info-icon</title>
+    <g id="GOLD" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="0.desktop" transform="translate(-232.000000, -1495.000000)" fill="#6A3534">
+            <g id="carbon-footprint-area" transform="translate(126.000000, 1206.000000)">
+                <path d="M114.1,302.5 L115.9,302.5 L115.9,297.1 L114.1,297.1 L114.1,302.5 Z M115,289 C110.05,289 106,293.05 106,298 C106,302.95 110.05,307 115,307 C119.95,307 124,302.95 124,298 C124,293.05 119.95,289 115,289 Z M115,305.2 C111.04,305.2 107.8,301.96 107.8,298 C107.8,294.04 111.04,290.8 115,290.8 C118.96,290.8 122.2,294.04 122.2,298 C122.2,301.96 118.96,305.2 115,305.2 Z M114.1,295.3 L115.9,295.3 L115.9,293.5 L114.1,293.5 L114.1,295.3 Z" id="info-icon"></path>
+            </g>
+        </g>
+    </g>
+</svg>

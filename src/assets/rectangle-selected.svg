@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="153px" height="42px" viewBox="0 0 153 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Rectangle</title>
+    <g id="GOLD" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="0.desktop" transform="translate(-523.000000, -2845.000000)" fill="#FFFFFF" stroke="#673332" stroke-width="2">
+            <g id="origin-area" transform="translate(-3.000000, 1712.000000)">
+                <g id="components-nav" transform="translate(526.000000, 862.000000)">
+                    <g id="active" transform="translate(0.000000, 271.000000)">
+                        <path d="M137.981123,1 L150.904273,21.5251312 L137.996294,41 L1,41 L1,1 L137.981123,1 Z" id="Rectangle"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
