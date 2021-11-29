@@ -189,10 +189,6 @@ export default class Home extends Vue {
 </script>
 
 <style lang="scss">
-:root {
-  --main-bg-color: #6A3534;
-}
-
 body {
   cursor: pointer;
   position: absolute;

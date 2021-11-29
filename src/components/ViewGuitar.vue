@@ -59,7 +59,7 @@ export default class ViewGuitar extends Vue {
 <style lang="scss">
 
 .element_front {
-  background: #341A19;
+  background: var(--main-bg-lighter-color);
 }
 
 .element_back {

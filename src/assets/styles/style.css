@@ -18,6 +18,8 @@
 }
 
 :root {
+    --main-bg-color: #2f130d;
+    --main-bg-lighter-color: #7a4745;
     --main-font: "RieuxMinus";
 }
 
