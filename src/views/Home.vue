@@ -158,7 +158,7 @@
         <div class="footer_copy"><small>© 2021 Breedlove Guitars Digital Passport. Blockchain technology powered
           by</small></div>
         <div class="footer_logo">
-          <img alt="" class="mx-2" style="max-width: 120px" src="@/assets/logo-forestchain.svg">
+          <img alt="" class="mx-2" style="max-width: 120px" src="@/assets/logo-forestchain.png">
         </div>
 
       </div>
