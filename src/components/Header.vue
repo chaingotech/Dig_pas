@@ -15,13 +15,8 @@
           <div class="first_info">
             <div class="text-white text-light">Acoustic Guitar - SCCCE</div>
             <h1 class="text-white text-uppercase bold-900 lh1 ">
-              Signature
-              <br>
-              Concert
-              <br>
-              Copper CE
+              {{ data.data.attributes.customAttributes.model }}
             </h1>
-
           </div>
         </div>
 
@@ -69,27 +64,35 @@
 </template>
 
 <script lang="ts">
-import {Options, Vue} from 'vue-class-component';
+import { defineComponent } from 'vue'
+import data from "@/data/guitar.json";
 
+export default defineComponent({
+  setup() {
+    const url = 'https://www.google.com'
 
-@Options({
-  components: {}
+    const _urlFacebook = (): string => {
+      return `https://www.facebook.com/sharer/sharer.php?kid_directed_site=0&sdk=joey&u=${url}&display=popup&ref=plugin&src=share_button`;
+    }
+
+    const _urlTwitter = (): string => {
+      const title = `Passport - ${url} - @guzmle2`;
+      return `https://twitter.com/intent/tweet?text=${title}&source=Shareaholic&related=shareaholic`;
+    }
+    return {
+      _urlFacebook,
+      _urlTwitter,
+      data,
+    }
+  }
 })
-export default class Header extends Vue {
-  url = 'https://www.google.com';
-
-  get _urlFacebook(): string {
-    return `https://www.facebook.com/sharer/sharer.php?kid_directed_site=0&sdk=joey&u=${this.url}&display=popup&ref=plugin&src=share_button`;
-  }
-
-  get _urlTwitter(): string {
-    const title = `Passport - ${this.url} - @guzmle2`;
-    return `https://twitter.com/intent/tweet?text=${title}&source=Shareaholic&related=shareaholic`;
-  }
-
-}
 </script>
 
-<style lang="scss">
-
+<style lang="scss" scoped>
+  h1 {
+    width: 300px;
+    @media screen and (max-width: 500px) {
+      width: 180px;
+    }
+  }
 </style>
