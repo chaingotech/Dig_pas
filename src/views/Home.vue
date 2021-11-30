@@ -146,9 +146,7 @@
       <span class="icon-plant text-center" style="font-size: 60px"></span>
       <br>
       <h4 class="text-white lh1">
-        “Debemos encontrar y mantener el equilibrio en el que <br>los recursos disponibles no se agoten más rápido de lo
-        <br>que
-        se regeneran naturalmente.”
+        “The conservation of out natural resources and their proper use,<br>constitute the fundamental problem which underlies almost every other problem.”
       </h4>
     </section>
     <section id="footer" class="d-flex justify-content-between px-5 py-3 flex-column-sm">
