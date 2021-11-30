@@ -155,7 +155,7 @@
       <div class="d-flex flex-column-sm align-items-sm-center">
         <img alt="" class="bg-white logo mb-2 only-xs" src="@/assets/logo-bedell.png">
 
-        <div class="footer_copy"><small>© 2021 Breedlove Guitars Digital Passport. Blockchain technology powered
+        <div class="footer_copy"><small>© 2021 Bedell Guitars Digital Passport. Blockchain technology powered
           by</small></div>
         <div class="footer_logo">
           <img alt="" class="mx-2" style="max-width: 120px" src="@/assets/logo-forestchain.png">
