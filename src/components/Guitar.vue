@@ -41,7 +41,7 @@
       <div class="modal-dialog" role="document">
         <div class="modal-content p-0 m-0">
           <div class="modal-body p-0 m-0">
-            <Sides class="p-4"/>
+            <Sides class="p-4" :item="active" />
             <div class="close-dialog py-4" data-dismiss="modal">Close</div>
           </div>
         </div>
@@ -61,7 +61,7 @@ export default {
   components: {
     Sides
   },
-  setup(_: any, { emit }: SetupContext) {
+  setup(_: unknown, { emit }: SetupContext): Record<string,unknown> {
     const active = ref()
 
     const items = data.data.attributes.items
