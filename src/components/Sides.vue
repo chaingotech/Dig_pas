@@ -5,10 +5,12 @@
     <!---->
     <h1 class="text-uppercase bold-900 text-center">Khaya Sides</h1>
 
+    <!--
     <span class="actions-groups text-center center">
-          <span class="active">General</span>
-          <span>Related Info</span>
-        </span>
+      <span class="active">General</span>
+      <span>Related Info</span>
+    </span>
+    -->
     <div class="my-4  side-indo">
       <img alt="" class="side-indo_logo" src="@/assets/imgs/forest.png">
       <div class="text-white side-indo_title">Origin country</div>
