@@ -1,41 +1,28 @@
 <template>
-
   <aside class="d-flex align-items-end flex-column w-100 " id="guitar-detail">
-<!--    <div class="d-flex align-self-center py-4">-->
-<!--      <span class="px-3 py-1 bg-white" style="border: solid 2px white"> Front</span>-->
-<!--      <span class="px-3 py-1 text-white" style="border: solid 2px white">Back</span>-->
-<!--    </div>-->
     <section class="d-flex align-items-sm-end w-100 justify-content-sm-between">
       <section class="px-2 bg-white">
         <div class="d-flex flex-column mr-sm-5  mr-sm-auto bg-white position-relative  ">
-
           <img v-if="active == null" alt="" class="guitar-img bg-white m-5" src="@/assets/guitar/full.svg">
           <img v-if="active != null" alt="" class="guitar-img bg-white m-5" :src="active.img">
-
-
           <div v-for="item in components" :key="item.title"
-               class="items-components"
-               @click="activeComponent(item)"
-               :class="{ active: active === item, [item.title]:true }">
+            class="items-components"
+            @click="activeComponent(item)"
+            :class="{ active: active === item, [item.title]:true }">
             <div class="outer-circle">
-              <div class="inner-circle">
-              </div>
+              <div class="inner-circle" />
             </div>
             <span>{{ item.title }}</span>
           </div>
         </div>
-
       </section>
       <section id="components-guitar">
-
         <ul v-if="isWeb()">
           <li v-for="item in components" :key="item.title"
-
               @click="activeComponent(item)"
               :class="{ active: active === item }">
             <span>{{ item.title }}</span>
           </li>
-
         </ul>
         <ul v-else>
           <li v-for="item in components" :key="item.title"
@@ -48,7 +35,6 @@
         </ul>
       </section>
     </section>
-    <!---->
 
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
          aria-hidden="true">
@@ -59,42 +45,63 @@
             <div class="close-dialog py-4" data-dismiss="modal">Close</div>
           </div>
         </div>
-
       </div>
     </div>
-
   </aside>
-
 </template>
 
 <script lang="ts">
-import {Options, Vue} from 'vue-class-component';
+import { ref, SetupContext } from "vue"
 import Sides from "@/components/Sides.vue";
+import data from "@/data/guitar.json";
 
-@Options({
-  components: {Sides}
-})
-export default class Guitar extends Vue {
+export default {
+  name: "Guitar",
+  emits: [ 'itemSelected' ],
+  components: {
+    Sides
+  },
+  setup(_: any, { emit }: SetupContext) {
+    const active = ref()
 
-  active: any = null;
-  components: { title: string, img: string }[] = [
-    {title: "headplate", img: require('@/assets/guitar/headplate.svg')},
-    {title: "fingerboard", img: require('@/assets/guitar/fingerboard.svg')},
-    {title: "heel", img: require('@/assets/guitar/heel.svg')},
-    {title: "bridge", img: require('@/assets/guitar/bridge.svg')},
-    {title: "top", img: require('@/assets/guitar/top.svg')},
-    {title: "neck", img: require('@/assets/guitar/neck.svg')},
-    {title: "back", img: require('@/assets/guitar/back.svg')},
-    {title: "sides", img: require('@/assets/guitar/sides.svg')}
-  ];
+    const items = data.data.attributes.items
 
+    const getItemByTitle = (title: string): any => {
+      return items.find(item => item.attributes.customAttributes.partName === title)
+    }
 
-  isWeb(): boolean {
-    return window.innerWidth > 500;
-  }
+    const isWeb = () => {
+      return window.innerWidth > 500
+    }
 
-  activeComponent(item: { title: string, img: string }): void {
-    this.active = item == this.active ? null : item;
+    const components = [
+      { title: "headplate", img: require('@/assets/guitar/headplate.svg'), data: {} },
+      { title: "fingerboard", img: require('@/assets/guitar/fingerboard.svg'), data: {} },
+      { title: "heel", img: require('@/assets/guitar/heel.svg'), data: {} },
+      { title: "bridge", img: require('@/assets/guitar/bridge.svg'), data: {} },
+      { title: "top", img: require('@/assets/guitar/top.svg'), data: {} },
+      { title: "neck", img: require('@/assets/guitar/neck.svg'), data: {} },
+      { title: "back", img: require('@/assets/guitar/back.svg'), data: {} },
+      { title: "side", img: require('@/assets/guitar/sides.svg'), data: {} }
+    ]
+
+    components.map(item => {
+      item.data = getItemByTitle(item.title)
+    })
+
+    const activeComponent = (item: any): void => {
+      emit('itemSelected', item)
+      active.value = item == active.value ? null : item
+    }
+
+    activeComponent(components.find(component => component.title == 'back'))
+
+    return {
+      components,
+      active,
+      isWeb,
+      activeComponent,
+    }
   }
 }
 </script>

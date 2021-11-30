@@ -1,0 +1,289 @@
+{
+    "data": {
+      "id": "06bd4228-1f02-45b7-bc61-8d72414bfff5",
+      "type": "item",
+      "attributes": {
+        "organizationID": "3c93b53e-cf1e-480f-99f5-4cf123e38b6a",
+        "name": "Guitar",
+        "description": "",
+        "category": "product",
+        "customAttributes": {
+          "code": "FS-P-AS/BR",
+          "alias": "",
+          "model": "Bedell Fireside Parlor Ancient Sitka-Puerta de Iglesia Brazilian",
+          "style": "Parlor",
+          "details": "",
+          "backViewFile": "https://www.dropbox.com/sh/6vovdxvyzdz0bd5/AAArshfKP1LcWWXXrS6m3RBBa?dl=0&preview=FIRESIDE+PARLOR+Ancient+Sitka.Brazilian_3.jpg",
+          "mainViewFile": "https://www.dropbox.com/sh/6vovdxvyzdz0bd5/AAArshfKP1LcWWXXrS6m3RBBa?dl=0&preview=FIRESIDE+PARLOR+Ancient+Sitka.Brazilian.jpg",
+          "frontViewFile": "https://www.dropbox.com/sh/6vovdxvyzdz0bd5/AAArshfKP1LcWWXXrS6m3RBBa?dl=0&preview=FIRESIDE+PARLOR+Ancient+Sitka.Brazilian_1.jpg",
+          "ownerLastName": "Bedell",
+          "ownerFirstName": "Tom"
+        },
+        "supplier": {
+          "name": "Two Old Hippies",
+          "category": "supplier",
+          "customAttributes": {
+            "taxId": "",
+            "address": {
+              "city": "Bend",
+              "state": "Oregon",
+              "value": "",
+              "latlng": {},
+              "street": "61573 American Loop",
+              "country": "USA",
+              "zipcode": "97702"
+            },
+            "additionalInfo": {
+              "object1Info": "https://bedellguitars.com/blog/seed-to-songtom-bedells-tedx-talk",
+              "object2Info": "https://bedellguitars.com/blog/playing-brazilian-rosewood-is-key-to-understanding-its-legendary-allure",
+              "object3Info": "https://bedellguitars.com/blog/unique-birdsbuilding-bedell-guitars-with-brazilian-rosewood",
+              "object4Info": "https://bedellguitars.com/blog/bedell-guitars-and-the-worlds-largest-library-of-brazilian-rosewood",
+              "object5Info": ""
+            }
+          }
+        },
+        "items": [
+          {
+            "id": "c0911cf8-63e4-49c2-a070-a4b8a56308a6",
+            "type": "item",
+            "attributes": {
+              "name": "finished_product",
+              "description": "Acoustic Top Set- Ancient Sitka Spruce- Glued/sanded",
+              "category": "end_product",
+              "customAttributes": {
+                "type": null,
+                "ncCode": null,
+                "origin": "USA",
+                "specie": {
+                  "text": "Sitka Spruce",
+                  "value": "Picea sitchensis"
+                },
+                "marking": "",
+                "quality": "",
+                "category": "Ninguno",
+                "partName": "top",
+                "supplierName": "Alaska Specialty Woods Inc.",
+                "forestmanagerName": "Alaska Specialty Woods Inc."
+              },
+              "dimensions": {
+                "width": "410",
+                "height": "3.2",
+                "length": "560"
+              },
+              "dimensionsUnit": "mm"
+            }
+          },
+          {
+            "id": "9c0912ee-e5ca-4d08-b822-0a289c0fe983",
+            "type": "item",
+            "attributes": {
+              "name": "finished_product",
+              "description": "Neck-Dovetail-Honduran Mah-Bedell-1.6875\"-25.0\" scale-Slotted HS-Trad.Brzln overlay w/.020\" blk",
+              "category": "end_product",
+              "customAttributes": {
+                "type": null,
+                "ncCode": null,
+                "origin": "Guatemala",
+                "specie": {
+                  "text": "Mahogany",
+                  "value": "Swietenia macrophylla"
+                },
+                "marking": "",
+                "quality": "",
+                "category": "Ninguno",
+                "partName": "neck",
+                "supplierName": "Custodios de la Selva",
+                "forestmanagerName": "Custodios de la Selva"
+              },
+              "dimensions": {
+                "width": "42.86",
+                "height": "25.4",
+                "length": "635"
+              },
+              "dimensionsUnit": "mm"
+            }
+          },
+          {
+            "id": "a48cc29d-3fb6-4593-80bb-91b775654296",
+            "type": "item",
+            "attributes": {
+              "name": "finished_product",
+              "description": "Tail Block-Guitar-Honduran Mahogany",
+              "category": "end_product",
+              "customAttributes": {
+                "type": null,
+                "ncCode": null,
+                "origin": "Guatemala",
+                "specie": {
+                  "text": "Mahogany",
+                  "value": "Swietenia macrophylla"
+                },
+                "marking": "",
+                "quality": "",
+                "category": "Ninguno",
+                "partName": "heel",
+                "supplierName": "Custodios de la Selva",
+                "forestmanagerName": "Custodios de la Selva"
+              },
+              "dimensions": {
+                "width": "85",
+                "height": "70",
+                "length": "150"
+              },
+              "dimensionsUnit": "mm"
+            }
+          },
+          {
+            "id": "11ad1488-7f81-43fa-af7d-1e75bddb62de",
+            "type": "item",
+            "attributes": {
+              "name": "finished_product",
+              "description": "Acoustic Back Set - Glued/Sanded -\"Puerta de Iglesia\" Brazilian Rosewood - Parlor (Bedell)",
+              "category": "end_product",
+              "customAttributes": {
+                "type": null,
+                "ncCode": null,
+                "origin": "Brazil",
+                "specie": {
+                  "text": "Brazilian Rosewood",
+                  "value": "Dalbergia nigra"
+                },
+                "marking": "",
+                "quality": "",
+                "category": "None",
+                "partName": "back",
+                "supplierName": "Madinter Coex, S.A.",
+                "forestmanagerName": "Bahia state"
+              },
+              "dimensions": {
+                "width": "410",
+                "height": "3.2",
+                "length": "560"
+              },
+              "dimensionsUnit": "mm"
+            }
+          },
+          {
+            "id": "aa7fd95e-9fec-4af2-b8cc-f161c6dde579",
+            "type": "item",
+            "attributes": {
+              "name": "finished_product",
+              "description": "Acoustic Side Set - Sanded -\"Puerta de Iglesia\" Brazilian Rosewood - OM/Parlor (Bedell)",
+              "category": "end_product",
+              "customAttributes": {
+                "type": null,
+                "ncCode": null,
+                "origin": "Brazil",
+                "specie": {
+                  "text": "Brazilian Rosewood",
+                  "value": "Dalbergia nigra"
+                },
+                "marking": "",
+                "quality": "",
+                "category": "None",
+                "partName": "side",
+                "supplierName": "Madinter Coex, S.A.",
+                "forestmanagerName": "Bahia state"
+              },
+              "dimensions": {
+                "width": "140",
+                "height": "2.4",
+                "length": "850"
+              },
+              "dimensionsUnit": "mm"
+            }
+          },
+          {
+            "id": "26780239-f22a-4117-9e73-5383e4380a79",
+            "type": "item",
+            "attributes": {
+              "name": "finished_product",
+              "description": "Trad.Brzln overlay w/.020\" blk",
+              "category": "end_product",
+              "customAttributes": {
+                "type": null,
+                "ncCode": null,
+                "origin": "Brazil",
+                "specie": {
+                  "text": "Brazilian Rosewood",
+                  "value": "Dalbergia nigra"
+                },
+                "marking": "",
+                "quality": "",
+                "category": "None",
+                "partName": "headplate",
+                "supplierName": "Madinter Coex, S.A.",
+                "forestmanagerName": "Bahia state"
+              },
+              "dimensions": {
+                "width": "90",
+                "height": "0.508",
+                "length": "200"
+              },
+              "dimensionsUnit": "mm"
+            }
+          },
+          {
+            "id": "d925be67-c6ec-4a96-b3ba-028d29e09e98",
+            "type": "item",
+            "attributes": {
+              "name": "finished_product",
+              "description": "Fretboard-Bedell-Brazilian 1 11/16\", 25.0\" scale, POCKETED-BLANK",
+              "category": "end_product",
+              "customAttributes": {
+                "type": null,
+                "ncCode": null,
+                "origin": "Brazil",
+                "specie": {
+                  "text": "Brazilian Rosewood",
+                  "value": "Dalbergia nigra"
+                },
+                "marking": "",
+                "quality": "",
+                "category": "None",
+                "partName": "fingerboard",
+                "supplierName": "Madinter Coex, S.A.",
+                "forestmanagerName": "Bahia state"
+              },
+              "dimensions": {
+                "width": "42.86",
+                "height": "6",
+                "length": "500"
+              },
+              "dimensionsUnit": "mm"
+            }
+          },
+          {
+            "id": "202ea23f-848c-486a-8433-09f0e17f1e99",
+            "type": "item",
+            "attributes": {
+              "name": "finished_product",
+              "description": "Bridge-Brazilian Rosewood Pyramid- Guitar",
+              "category": "end_product",
+              "customAttributes": {
+                "type": null,
+                "ncCode": null,
+                "origin": "Brazil",
+                "specie": {
+                  "text": "Brazilian Rosewood",
+                  "value": "Dalbergia nigra"
+                },
+                "marking": "",
+                "quality": "",
+                "category": "None",
+                "partName": "bridge",
+                "supplierName": "Madinter Coex, S.A.",
+                "forestmanagerName": "Bahia state"
+              },
+              "dimensions": {
+                "width": "45",
+                "height": "10",
+                "length": "130"
+              },
+              "dimensionsUnit": "mm"
+            }
+          }
+        ]
+      }
+    }
+  }

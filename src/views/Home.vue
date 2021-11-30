@@ -71,8 +71,7 @@
       <div class="b-primary-before">
         <img alt="" class="lines" src="@/assets/curves-lines.svg">
       </div>
-      <Guitar/>
-      <Sides class="hidden-xs"/>
+      <GuitarSide />
     </section>
     <Map/>
     <!--        <br>-->
@@ -174,13 +173,12 @@
 <script lang="ts">
 import {Options, Vue} from 'vue-class-component';
 import Map from "@/components/Map.vue";
-import Guitar from "@/components/Guitar.vue";
-import Sides from "@/components/Sides.vue";
 import ViewGuitar from "@/components/ViewGuitar.vue";
 import Header from "@/components/Header.vue";
+import GuitarSide from '@/components/GuitarSide.vue';
 
 @Options({
-  components: {Header, ViewGuitar, Guitar, Map, Sides},
+  components: {Header, ViewGuitar, Map, GuitarSide},
 })
 export default class Home extends Vue {
 }
