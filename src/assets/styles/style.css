@@ -9,18 +9,15 @@
     font-style: normal;
     font-display: block;
 }
-@font-face {
-    font-family: 'RieuxMinus';
-    src: url('../fonts/RieuxMinus.otf') format('opentype');
-    font-weight: normal;
-    font-style: normal;
-    font-display: block;
-}
 
 :root {
     --main-bg-color: #2f130d;
     --main-bg-lighter-color: #7a4745;
-    --main-font: "RieuxMinus";
+    --main-font: "Stint Ultra Condensed";
+}
+
+html {
+    letter-spacing: 0.1rem;
 }
 
 [class^="icon-"], [class*=" icon-"] {
