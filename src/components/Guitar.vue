@@ -268,7 +268,7 @@ export default {
     }
   }
 
-  &.sides {
+  &.side {
     right: 0;
     top: 55%;
     width: 20%;
