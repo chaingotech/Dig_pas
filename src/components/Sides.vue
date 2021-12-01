@@ -1,7 +1,7 @@
 <template>
   <aside class=" mt-sm-5  bg-white p-sm-5 d-flex flex-column" v-if="item">
     <h1 class="text-uppercase bold-900 text-center">{{ item.data.attributes.customAttributes.specie.text }} {{ item.title }}</h1>
-    <div class="my-4  side-indo">
+    <div class="my-4 side-indo radial-background">
       <img alt="" class="side-indo_logo" :src="images[item.data.attributes.customAttributes.origin].img">
       <div class="text-white side-indo_title">Origin country</div>
       <div class="side-indo_center flex-column lh1">
@@ -11,7 +11,7 @@
         <h4>{{ item.data.attributes.customAttributes.origin }}</h4>
       </div>
     </div>
-    <a target="_blank" :href="images[item.data.attributes.customAttributes.specie.text].link" class="my-4 side-indo">
+    <a target="_blank" :href="images[item.data.attributes.customAttributes.specie.text].link" class="my-4 side-indo radial-background">
       <img alt="" class="side-indo_logo" :src="images[item.data.attributes.customAttributes.specie.text].img">
       <div class="text-white side-indo_title">specie &amp; botanic name</div>
       <div class="side-indo_center flex-column lh1">
@@ -68,4 +68,20 @@ export default defineComponent({
 </script>
 
 <style lang="scss">
+  .radial-background {
+    position: relative;
+    > div {
+      z-index: 5;
+    }
+    &::after {
+      content: " ";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle, rgba(0,0,0,0.75) 0%, rgba(13,13,4,0) 100%);
+      z-index: 1;
+    }
+  }
 </style>
