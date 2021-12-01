@@ -41,11 +41,11 @@
               your friends
             </div>
             <div class="ml-auto">
-              <a :href="_urlFacebook"
+              <a :href="urlFacebook"
                  onclick="return !window.open(this.href, 'Facebook', 'width=640,height=580')">
                 <img alt="" src="@/assets/social/social-facebook.svg" style="width: 30px" class="mr-2">
               </a>
-              <a :href="_urlTwitter"
+              <a :href="urlTwitter"
                  onclick="return !window.open(this.href, 'Twitter', 'width=640,height=580')">
                 <img alt="" src="@/assets/social/social-twitter.svg" style="width: 30px" class="mr-2">
 
@@ -71,17 +71,17 @@ export default defineComponent({
   setup() {
     const url = 'https://www.google.com'
 
-    const _urlFacebook = (): string => {
+    const urlFacebook = (): string => {
       return `https://www.facebook.com/sharer/sharer.php?kid_directed_site=0&sdk=joey&u=${url}&display=popup&ref=plugin&src=share_button`;
     }
 
-    const _urlTwitter = (): string => {
+    const urlTwitter = (): string => {
       const title = `Passport - ${url} - @guzmle2`;
       return `https://twitter.com/intent/tweet?text=${title}&source=Shareaholic&related=shareaholic`;
     }
     return {
-      _urlFacebook,
-      _urlTwitter,
+      urlFacebook,
+      urlTwitter,
       data,
     }
   }
