@@ -3,8 +3,8 @@
     <section class="d-flex align-items-sm-end w-100 justify-content-sm-between">
       <section class="px-2 bg-white">
         <div class="d-flex flex-column mr-sm-5  mr-sm-auto bg-white position-relative  ">
-          <img v-if="active == null" alt="" class="guitar-img bg-white m-5" src="@/assets/guitar/full.svg">
-          <img v-if="active != null" alt="" class="guitar-img bg-white m-5" :src="active.img">
+          <img v-if="active.title == 'default'" alt="" class="guitar-img bg-white m-5" src="@/assets/guitar/full.svg">
+          <img v-else alt="" class="guitar-img bg-white m-5" :src="active.img">
           <div v-for="item in components" :key="item.title"
             class="items-components"
             @click="activeComponent(item)"
@@ -75,26 +75,33 @@ export default {
     }
 
     const components = [
-      { title: "headplate", img: require('@/assets/guitar/headplate.svg'), data: {} },
-      { title: "fingerboard", img: require('@/assets/guitar/fingerboard.svg'), data: {} },
-      { title: "heel", img: require('@/assets/guitar/heel.svg'), data: {} },
-      { title: "bridge", img: require('@/assets/guitar/bridge.svg'), data: {} },
-      { title: "top", img: require('@/assets/guitar/top.svg'), data: {} },
-      { title: "neck", img: require('@/assets/guitar/neck.svg'), data: {} },
-      { title: "back", img: require('@/assets/guitar/back.svg'), data: {} },
-      { title: "side", img: require('@/assets/guitar/sides.svg'), data: {} }
+      { title: "headplate", img: require('@/assets/guitar/headplate.svg'), data: {}, default: false },
+      { title: "fingerboard", img: require('@/assets/guitar/fingerboard.svg'), data: {}, default: false },
+      { title: "heel", img: require('@/assets/guitar/heel.svg'), data: {}, default: false },
+      { title: "bridge", img: require('@/assets/guitar/bridge.svg'), data: {}, default: false },
+      { title: "top", img: require('@/assets/guitar/top.svg'), data: {}, default: false },
+      { title: "neck", img: require('@/assets/guitar/neck.svg'), data: {}, default: false },
+      { title: "back", img: require('@/assets/guitar/back.svg'), data: {}, default: false },
+      { title: "side", img: require('@/assets/guitar/sides.svg'), data: {}, default: false }
     ]
 
     components.map(item => {
       item.data = getItemByTitle(item.title)
     })
 
+    components.push({
+      title: "default",
+      img: require('@/assets/guitar/sides.svg'),
+      data: getItemByTitle('side'),
+      default: true
+    });
+
     const activeComponent = (item: any): void => {
       emit('itemSelected', item)
       active.value = item == active.value ? null : item
     }
 
-    activeComponent(components.find(component => component.title == 'back'))
+    activeComponent(components.find(component => component.title == 'default'))
 
     return {
       components,
@@ -217,6 +224,10 @@ export default {
     }
 
     border-color: #6A3534;
+  }
+
+  &.default {
+    display: none;
   }
 
   &.headplate {
