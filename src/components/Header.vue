@@ -41,11 +41,11 @@
               your friends
             </div>
             <div class="ml-auto">
-              <a :href="urlFacebook"
+              <a :href="urlFacebook()"
                  onclick="return !window.open(this.href, 'Facebook', 'width=640,height=580')">
                 <img alt="" src="@/assets/social/social-facebook.svg" style="width: 30px" class="mr-2">
               </a>
-              <a :href="urlTwitter"
+              <a :href="urlTwitter()"
                  onclick="return !window.open(this.href, 'Twitter', 'width=640,height=580')">
                 <img alt="" src="@/assets/social/social-twitter.svg" style="width: 30px" class="mr-2">
 
