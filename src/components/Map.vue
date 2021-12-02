@@ -6,6 +6,7 @@
         libraries="geometry,drawing,places"
         :options="_optionsMap"
         :markers="markers"
+        @map-created="mapCreated"
     />
     <div  class="bg-white py-2 px-4 ml-4" style="position: absolute; bottom: -10%; z-index: 1">
       <h1 class="bold-900">Sustainable Wood</h1>
@@ -94,8 +95,10 @@ export default class Map extends Vue {
       panControl: false,
       keyboardShortcuts: false,
       center: this.markers[0].position,
-      zoom: 2, mapTypeControl: false,
-      styles: this.stylesMarker()
+      zoom: 2,
+      mapTypeControl: false,
+      styles: this.stylesMarker(),
+      mapTypeId: 'satellite'
     };
   }
 }
