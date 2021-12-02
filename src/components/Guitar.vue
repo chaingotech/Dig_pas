@@ -339,7 +339,7 @@ export default {
     ul {
       li {
         width: auto;
-        padding: 10px 30px;
+        padding: 10px 10px 0 30px;
 
         &.active {
           border: 4px solid var(--main-bg-color);
