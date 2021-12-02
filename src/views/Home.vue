@@ -394,8 +394,11 @@ h1 {
   .img-local {
     position: absolute;
     top: 30%;
-    width: 420px;
+    width: 400px;
     //left: 0;
+    img {
+      max-width: 100%;
+    }
   }
 
   .img-crasftman {
