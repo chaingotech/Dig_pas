@@ -145,7 +145,7 @@
       <span class="icon-plant text-center" style="font-size: 60px"></span>
       <br>
       <h4 class="text-white lh1">
-        “The conservation of out natural resources and their proper use,<br>constitute the fundamental problem which underlies almost every other problem.”
+        “The conservation of our natural resources and their proper use,<br>constitute the fundamental problem which underlies almost every other problem.”
       </h4>
     </section>
     <section id="footer" class="d-flex justify-content-between px-5 py-3 flex-column-sm">
@@ -160,8 +160,8 @@
 
       </div>
       <div class="footer_logo">
-        <a href="https://www.facebook.com/forestChainCo"> <img alt="" class="m-2" src="@/assets/icon/facebook.svg"></a>
-        <a href="https://twitter.com/ForestChainco"><img alt="" class="m-2" src="@/assets/icon/twitter.svg"></a>
+        <a href="https://www.facebook.com/forestChainCo" target="_blank"> <img alt="" class="m-2" src="@/assets/icon/facebook.svg"></a>
+        <a href="https://twitter.com/ForestChainco" target="_blank"><img alt="" class="m-2" src="@/assets/icon/twitter.svg"></a>
 
       </div>
 
