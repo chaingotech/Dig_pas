@@ -6,7 +6,6 @@
         libraries="geometry,drawing,places"
         :options="_optionsMap"
         :markers="markers"
-        @map-created="mapCreated"
     />
     <div  class="bg-white py-2 px-4 ml-4" style="position: absolute; bottom: -10%; z-index: 1">
       <h1 class="bold-900">Sustainable Wood</h1>
@@ -32,17 +31,16 @@ export default class Map extends Vue {
   center = {lat: 40.689247, lng: -74.044502};
 
   markerOptions = {position: this.center, label: 'L', title: 'LADY LIBERTY'}
-  markers = [{
-    position: {lat: 55.4871312, lng: -133.121919523918},
-    title: 'USA - Alaska Specialty Woods Inc. - Sitka Spruce',
-    icon: require('@/assets/icon/marker.svg')
-  }
-    , {
+  markers = [
+    {
+      position: {lat: 55.4871312, lng: -133.121919523918},
+      title: 'USA - Alaska Specialty Woods Inc. - Sitka Spruce',
+      icon: require('@/assets/icon/marker.svg'),
+    }, {
       position: {lat: 17.5177021, lng: -90.0420652},
       title: 'Guatemala - Custodios de la Selva - Mahogany (Swietenia macrophylla)',
       icon: require('@/assets/icon/marker.svg')
-    }
-    , {
+    }, {
       position: {lat: -11.0578292, lng: -44.3068948},
       title: 'Brazil - Madinter Coex, S.A. - Bahia State - Brazilian Rosewood (Dalbergia nigra)',
       icon: require('@/assets/icon/marker.svg')
