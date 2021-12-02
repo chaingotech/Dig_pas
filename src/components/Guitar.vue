@@ -73,7 +73,7 @@ export default {
     }
 
     const isWeb = () => {
-      return window.innerWidth > 500
+      return window.innerWidth > 800
     }
 
     const components = [

@@ -313,7 +313,6 @@ img.svg-primary {
     object-fit: cover;
     width: 430px;
     height: 217px;
-    position: absolute;
     z-index: 0;
   }
 
@@ -481,7 +480,7 @@ h1 {
   text-decoration: underline;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 800px) {
   /* Mobile
  */
 
