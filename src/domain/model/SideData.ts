@@ -12,11 +12,11 @@ export default class SideData {
     },
     'USA': {
       'img': '/images/countries/USA.jpg',
-      'link': null,
+      'link': 'https://bedellguitars.com/blog/sitkathe-majestic-sound-of-everyones-favorite-guitar-top',
     },
     'Guatemala': {
       'img': '/images/countries/Guatemala.jpg',
-      'link': null,
+      'link': 'https://bedellguitars.com/blog/bedell-guitars-and-the-worlds-largest-library-of-brazilian-rosewood',
     }
   };
 
