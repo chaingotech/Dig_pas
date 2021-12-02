@@ -8,7 +8,7 @@ export default class SideData {
   countryData: any = {
     'Brazil': {
       'img': '/images/countries/Brazil.jpg',
-      'link': null,
+      'link': 'https://bedellguitars.com/blog/bedell-guitars-and-the-worlds-largest-library-of-brazilian-rosewood',
     },
     'USA': {
       'img': '/images/countries/USA.jpg',
@@ -16,7 +16,7 @@ export default class SideData {
     },
     'Guatemala': {
       'img': '/images/countries/Guatemala.jpg',
-      'link': 'https://bedellguitars.com/blog/bedell-guitars-and-the-worlds-largest-library-of-brazilian-rosewood',
+      'link': 'https://bedellguitars.com/seed-to-song/the-tonewood-certification-project/suppliers/costocel',
     }
   };
 

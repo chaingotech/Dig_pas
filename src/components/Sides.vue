@@ -4,7 +4,7 @@
       {{ item.getSpecieName }}
       <span v-if="!item.isDefault">{{ item.partName }}</span>
     </h1>
-    <div class="my-4 side-indo radial-background">
+    <a target="_blank" :href="item.getCountryLink" class="my-4 side-indo radial-background">
       <img alt="" class="side-indo_logo" :src="item.getCountryImage">
       <div class="text-white side-indo_title">Origin country</div>
       <div class="side-indo_center flex-column lh1">
@@ -13,7 +13,7 @@
         </div>
         <h4>{{ item.getCountryName }}</h4>
       </div>
-    </div>
+    </a>
     <a target="_blank" :href="item.getSpecieLink" class="my-4 side-indo radial-background">
       <img alt="" class="side-indo_logo" :src="item.getSpecieImage">
       <div class="text-white side-indo_title">specie &amp; botanic name</div>
