@@ -25,15 +25,15 @@
             <img alt="" src="@/assets/icon/hash-icon.svg" style="width: 28px" class="mr-4">
 
             <div class="lh1 bold-500">
-              <a
-                href="https://rinkeby.etherscan.io/tx/0x605bccecbcb9ceeb0ffc3d08d39a38bdae035e41f09a1893a8652dce85fa763d">
                 034234-234-234234–4234234
-              </a>
               <br>
               <span class="text-light "> Passport Blockchain Hash</span>
             </div>
-            <img alt="" src="@/assets/icon/arrow-right.svg" style="width: 28px" class="ml-4 ml-auto">
-
+            <a
+              class="ml-4 ml-auto"
+              href="https://rinkeby.etherscan.io/tx/0x605bccecbcb9ceeb0ffc3d08d39a38bdae035e41f09a1893a8652dce85fa763d">
+              <img alt="" src="@/assets/icon/arrow-right.svg" style="width: 28px">
+            </a>
           </div>
         </div>
         <div class="ml-sm-5  text-white box-info">
