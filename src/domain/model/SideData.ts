@@ -1,5 +1,6 @@
 export default class SideData {
   partName: string;
+  partImage: string;
   countryName: string;
   specieName: string;
   specieScientificName: string;
@@ -37,10 +38,19 @@ export default class SideData {
 
   constructor (data: any) {
     this.partName = data.partName;
+    this.partImage = data.partImage;
     this.countryName = data.countryName;
     this.specieName = data.specieName;
     this.specieScientificName = data.specieScientificName;
     this.default = data.default;
+  }
+
+  get getPartName (): string {
+    return this.partName;
+  }
+
+  get getPartImage (): string {
+    return this.partImage;
   }
 
   get getCountryName (): string {

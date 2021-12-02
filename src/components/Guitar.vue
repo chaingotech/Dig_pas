@@ -2,35 +2,35 @@
   <aside class="d-flex align-items-end flex-column w-100 " id="guitar-detail">
     <section class="d-flex align-items-sm-end w-100 justify-content-sm-between">
       <section class="px-2 bg-white">
-        <div class="d-flex flex-column mr-sm-5  mr-sm-auto bg-white position-relative  ">
-          <img v-if="active.title == 'default'" alt="" class="guitar-img bg-white m-5" src="@/assets/guitar/full.svg">
-          <img v-else alt="" class="guitar-img bg-white m-5" :src="active.img">
-          <div v-for="item in components" :key="item.title"
+        <div class="d-flex flex-column mr-sm-5  mr-sm-auto bg-white position-relative">
+          <img v-if="active.isDefault" alt="" class="guitar-img bg-white m-5" src="@/assets/guitar/full.svg">
+          <img v-else alt="" class="guitar-img bg-white m-5" :src="active.getPartImage">
+          <div v-for="item in convertedComponents" :key="item.getPartName"
             class="items-components"
             @click="activeComponent(item)"
-            :class="{ active: active === item, [item.title]:true }">
+            :class="{ active: active === item, [item.getPartName]:true }">
             <div class="outer-circle">
               <div class="inner-circle" />
             </div>
-            <span>{{ item.title }}</span>
+            <span>{{ item.getPartName }}</span>
           </div>
         </div>
       </section>
       <section id="components-guitar">
         <ul v-if="isWeb()">
-          <li v-for="item in components" :key="item.title"
+          <li v-for="item in convertedComponents" :key="item.getPartName"
               @click="activeComponent(item)"
               :class="{ active: active === item }">
-            <span>{{ item.title }}</span>
+            <span>{{ item.getPartName }}</span>
           </li>
         </ul>
         <ul v-else>
-          <li v-for="item in components" :key="item.title"
+          <li v-for="item in convertedComponents" :key="item.getPartName"
               data-toggle="modal" data-target="#exampleModal"
               data-whatever="@getbootstrap"
               @click="activeComponent(item)"
               :class="{ active: active === item }">
-            <span>{{ item.title }}</span>
+            <span>{{ item.getPartName }}</span>
           </li>
         </ul>
       </section>
@@ -54,6 +54,8 @@
 import { ref, SetupContext } from "vue"
 import Sides from "@/components/Sides.vue";
 import data from "@/data/guitar.json";
+import SideDataFactory from '@/domain/service/SideDataFactory';
+import SideData from '@/domain/model/SideData';
 
 export default {
   name: "Guitar",
@@ -85,26 +87,23 @@ export default {
       { title: "side", img: require('@/assets/guitar/sides.svg'), data: {}, default: false }
     ]
 
+    let convertedComponents: Array<SideData>;
+
     components.map(item => {
       item.data = getItemByTitle(item.title)
     })
 
-    components.push({
-      title: "default",
-      img: require('@/assets/guitar/sides.svg'),
-      data: getItemByTitle('side'),
-      default: true
-    });
+    convertedComponents = components.map(item => SideDataFactory.fromJson(item))
 
     const activeComponent = (item: any): void => {
       emit('itemSelected', item)
       active.value = item == active.value ? null : item
     }
 
-    activeComponent(components.find(component => component.title == 'default'))
+    activeComponent(SideDataFactory.getDefault());
 
     return {
-      components,
+      convertedComponents,
       active,
       isWeb,
       activeComponent,
