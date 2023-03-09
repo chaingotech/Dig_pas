@@ -2,13 +2,18 @@
 import AuthService from '@/services/auth.service'
 
 const token = localStorage.getItem('token')
-const initialState = token
-  ? { loggedIn: true, token }
-  : { loggedIn: false, token: null };
+const refreshToken = localStorage.getItem('refresh-token')
+
+const initialState = {
+  loggedIn: !!token,
+  token: token || null,
+  refreshToken: refreshToken || null
+}
 
 type AuthState = {
   loggedIn: boolean
   token: string|null
+  refreshToken: string|null
 }
 
 type LoginPayload = {
@@ -20,9 +25,15 @@ const AuthModule = {
   namespaced: true,
   state: initialState,
   actions: {
+    async refreshTokens ({ commit }: any) {
+      const data = await AuthService.refreshTokens()
+      data && data?.accessToken && commit('login', data)
+    },
     async login ({ commit }: any, credentials: LoginPayload): Promise<void> {
-      const token = await AuthService.login(credentials)
-      commit('login', token)
+      const data = await AuthService.login(credentials)
+      if (data?.accessToken) {
+        commit('login', data)
+      }
     },
     logout({ commit }: any) {
       AuthService.logout();
@@ -30,13 +41,15 @@ const AuthModule = {
     }
   },
   mutations: {
-    login (state: AuthState, token: string) {
+    login (state: AuthState, data: Record<'accessToken'|'refreshToken', string|null>) {
       state.loggedIn = true;
-      state.token = token;
+      state.token = data?.accessToken || null;
+      state.refreshToken = data?.refreshToken || null;
     },
     logout (state: AuthState) {
       state.loggedIn = false;
       state.token = null;
+      state.refreshToken = null;
     }
   }
 }
