@@ -16,36 +16,6 @@
       <ViewGuitar/>
     </section>
 
-    <!--    <section class="d-flex  justify-content-center align-items-center w-100  my-5  flex-column-reverse-sm">-->
-    <!--      <aside class="ml-5 ">-->
-    <!--        <h1 class="bold-900 lh1 text-uppercase">Carbon-->
-    <!--          <br>-->
-    <!--          Footprint-->
-    <!--        </h1>-->
-
-    <!--        <div class="box-info-text">-->
-    <!--          The average carbon footprint for-->
-    <!--          <br>-->
-    <!--          this guitar we produce goes from-->
-    <!--          <br>-->
-    <!--          <strong> 35.3kg</strong>-->
-    <!--          to-->
-    <!--          <strong>14.1kg</strong>-->
-    <!--          of CO2-->
-    <!--        </div>-->
-    <!--        <div class="my-4">-->
-    <!--          <span class="icon-info-icon mr-2"></span>-->
-
-    <!--          <u class="t-primary">Need further info?, please follow this link</u>-->
-    <!--          <span class="icon-arrow-right t-primary ml-2" style="font-size: 10px"></span>-->
-    <!--        </div>-->
-    <!--      </aside>-->
-    <!--      <aside class="ml-5 mt-5 w-sm-100 align-self-md-end ml-md-auto">-->
-    <!--        <img alt="" class=" w-sm-100 " src="@/assets/imgs/carbon.png">-->
-
-    <!--      </aside>-->
-    <!--    </section>-->
-
     <section class="d-flex  justify-content-center align-items-center justify-content-between  flex-column-sm ">
       <div class="b-primary-before">
         <!--        <img alt="" class="lines" src="@/assets/curves-lines.svg">-->
@@ -220,7 +190,7 @@ section {
 }
 
 img.svg-primary {
-  #0.desktop g {
+  .desktop g {
 
     fill: var(--main-bg-color) !important;
   }
