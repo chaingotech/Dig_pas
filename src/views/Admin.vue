@@ -3,6 +3,12 @@
     <template #actions>
       <button
         type="button"
+        class="btn btn-primary btn-sm mr-4"
+      >
+        Create new one
+      </button>
+      <button
+        type="button"
         class="btn btn-secondary btn-sm"
         @click="logout"
       >
@@ -28,9 +34,3 @@ const logout = () => {
 }
 
 </script>
-
-<style lang="scss">
-.admin-page {
-  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-</style>

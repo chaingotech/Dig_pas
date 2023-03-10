@@ -13,7 +13,7 @@
 
 <style lang="scss">
 .admin-page-header {
-  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   position: sticky;
   width: 100%;
   top: 0;
@@ -22,5 +22,7 @@
   justify-content: space-between;
   height: 50px;
   padding: 0 16px;
+  background: #fafafa;
+  z-index: 2;
 }
 </style>
