@@ -13,7 +13,7 @@
 
 <style lang="scss">
 .admin-page-header {
-  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-family: 'Roboto', sans-serif;
   position: sticky;
   width: 100%;
   top: 0;

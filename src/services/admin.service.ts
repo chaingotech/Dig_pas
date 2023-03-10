@@ -3,8 +3,9 @@ import axiosInstance, {
 } from './api'
 
 class AdminService {
-  getList (): Promise<Record<'data', any[]>> {
+  getList (): Promise<{ data: any[] }> {
     return axiosInstance.get(PASSPORTS_PATH)
+      .then(({ data }) => data)
   }
   
   createItem (data: Record<string, any>): Promise<Record<'data', any>> {

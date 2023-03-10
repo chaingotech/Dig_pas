@@ -25,7 +25,6 @@
             </div>
           </form>
         </div>
-
       </div>
     </div>
   </div>
@@ -74,7 +73,7 @@ export default {
 
 <style lang="scss">
 .login-page {
-  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Roboto', sans-serif;
   height: 100vh;
   display: flex;
   align-items: center;

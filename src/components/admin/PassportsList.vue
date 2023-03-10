@@ -11,7 +11,7 @@
             >
               <div class="d-flex flex-row align-items-center">
                 <div class="ml-2">
-                  <h6 class="mb-0">{{ item.attributes.customAttributes.title }}</h6>
+                  <h6 class="mb-0">{{ item.attributes.customAttributes.title || '-' }}</h6>
                   <div class="d-flex flex-row mt-1 text-black-50 date-time">
                     <div>
                       <span class="ml-2 text-secondary">
@@ -23,8 +23,15 @@
               </div>
               <div class="d-flex flex-row align-items-center">
                 <div class="d-flex align-items-center mr-2">
-                  <button type="button" class="btn btn-sm btn-outline-primary mr-2">Edit</button>
-                  <button type="button" class="btn btn-sm btn-outline-danger">Remove</button>
+                  <button type="button" class="btn btn-sm btn-outline-primary mr-2" @click="() => $emit('edit', item.id)">Edit</button>
+                  <button
+                    type="button"
+                    class="btn btn-sm btn-outline-danger"
+                    :disabled="removingItemId.value === item.id"
+                    @click="() => removeItem(item.id)"
+                  >
+                    Remove
+                  </button>
                 </div>
               </div>
             </li>
@@ -36,53 +43,36 @@
 </template>
 
 <script lang="ts" setup>
+import { computed } from 'vue'
+import { useStore } from 'vuex'
+import { ref, onMounted } from 'vue'
 
-const items = [{
-  attributes: {
-    customAttributes: {
-      title: 'Test'
-    },
-    updatedAt: new Date().getUTCDate()
-  },
-  id: (Math.random() * new Date().getTime()).toString()
-}, {
-  attributes: {
-    customAttributes: {
-      title: 'Test'
-    },
-    updatedAt: new Date().getUTCDate()
-  },
-  id: (Math.random() * new Date().getTime()).toString()
-}, {
-  attributes: {
-    customAttributes: {
-      title: 'Test'
-    },
-    updatedAt: new Date().getUTCDate()
-  },
-  id: (Math.random() * new Date().getTime()).toString()
-}, {
-  attributes: {
-    customAttributes: {
-      title: 'Test'
-    },
-    updatedAt: new Date().getUTCDate()
-  },
-  id: (Math.random() * new Date().getTime()).toString()
-}, {
-  attributes: {
-    customAttributes: {
-      title: 'Test'
-    },
-    updatedAt: new Date().getUTCDate()
-  },
-  id: (Math.random() * new Date().getTime()).toString()
-}]
+const removingItemId = ref(false)
+
+const store = useStore()
+
+onMounted(() => {
+  store.dispatch('admin/fetchItems')  
+})
+
+
+const items = computed(() => store.state.admin.items)
+
+const removeItem = async (id: string): Promise<void> => {
+  const confirmed = confirm('Do you really want to remove this item?')
+  if (!confirmed) {
+    return
+  }
+  removingItemId.value = true
+  await store.dispatch('admin/removeItem', id)
+  removingItemId.value = false
+}
+
 </script>
 
 <style lang="scss">
 .passports-list {
-  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-family: 'Roboto', sans-serif;
 
   .icons i {
     color: #b5b3b3;
