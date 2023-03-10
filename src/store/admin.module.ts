@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import AdminService from '@/services/admin.service'
+import TokenService from '@/services/token.service'
 
 const initialState = {
   items: [] as any[]
@@ -21,7 +22,15 @@ const AdminModule = {
     },
     async createItem ({ commit }: any, data: Record<string, any>) {
       try {
-        const { data: item } = await AdminService.createItem(data)
+        const {
+          userId,
+          organizationId
+        } = TokenService.getAuthData()
+        const { data: item } = await AdminService.createItem({
+          userId,
+          organizationId,
+          data
+        })
         commit('addItem', item)
       } catch (err) {
         console.error(err)
@@ -56,8 +65,8 @@ const AdminModule = {
     },
     addItem (state: AdminState, item: any) {
       state.items = [
-        ...state.items,
-        item
+        item,
+        ...state.items
       ]
     },
     updateItem (state: AdminState, item: any) {

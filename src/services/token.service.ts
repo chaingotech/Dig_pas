@@ -1,20 +1,33 @@
+type AuthData = {
+  accessToken: string|null
+  refreshToken: string|null
+  organizationId: string|null
+  userId: string|null
+}
+
 class TokenService {
-  getTokens (): Record<'accessToken'|'refreshToken', string|null> {
+  getTokens (): AuthData {
     const storedAuthData = localStorage?.getItem?.('auth-data') as string
     let data = {
       accessToken: null,
-      refreshToken: null
+      refreshToken: null,
+      organizationId: null,
+      userId: null
     }
     try {
       const parsedData = JSON.parse(storedAuthData || "{}") || {}
       data = {
         accessToken: parsedData?.accessToken || null,
-        refreshToken: parsedData?.refreshToken || null
+        refreshToken: parsedData?.refreshToken || null,
+        organizationId: parsedData?.organizationId || null,
+        userId: parsedData?.userId || null
       }
     } catch (_err) {
       data = {
         accessToken: null,
-        refreshToken: null
+        refreshToken: null,
+        organizationId: null,
+        userId: null
       }
     }
     return data
@@ -40,7 +53,7 @@ class TokenService {
     return this.getTokens()
   }
 
-  setAuthData (data: Record<'accessToken'|'refreshToken', string|null>) { // setUser
+  setAuthData (data: AuthData) { // setUser
 
     localStorage.setItem('auth-data', JSON.stringify(data));
   }

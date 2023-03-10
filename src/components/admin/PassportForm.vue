@@ -1,15 +1,30 @@
 <template>
   <div class="card passport-form" style="width: 18rem;">
     <div class="card-body">
-      <h5 class="card-title">{{ formTitile }}</h5>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      <a href="#" class="btn btn-primary btn-sm">Go somewhere</a>
+      <h5 class="card-title mb-3">{{ formTitile }}</h5>
+      <form @submit.prevent="save">
+        <div class="mb-3">
+          <input v-model="title" type="text" class="form-control" placeholder="Title">
+        </div>
+        <div class="d-flex justify-content-end">
+          <button
+            type="submit"
+            class="btn btn-primary btn-sm"
+            :disabled="loading"
+          >
+            {{ itemId ? 'Save' : 'Create' }}
+          </button>
+        </div>
+      </form>
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { computed, defineProps } from 'vue'
+import { ref, computed, defineProps } from 'vue'
+import { useStore } from 'vuex';
+
+const store = useStore()
 
 const props = defineProps({
   editableItemId: {
@@ -20,10 +35,27 @@ const props = defineProps({
 
 const itemId = computed(() => props.editableItemId)
 const formTitile = computed(() => props.editableItemId ? 'Edit passport' : 'Create passport')
+const item = computed(() => props.editableItemId && store.state.admin.items.find((i: any) => i.id === props.editableItemId))
 
-console.log('test', props.editableItemId)
+const loading = ref(false)
+const title = ref(item?.value?.attributes?.customAttributes?.title || '')
 
-// const emit = defineEmits(['close'])
+const save = async () => {
+  loading.value = true
+  if (item?.value?.id) {
+    await store.dispatch('admin/updateItem', {
+      id: item.value.id,
+      data: {
+        title: title.value
+      }
+    })
+  } else {
+    await store.dispatch('admin/createItem', {
+      title: title.value
+    })
+  }
+  loading.value = false
+}
 
 </script>
 

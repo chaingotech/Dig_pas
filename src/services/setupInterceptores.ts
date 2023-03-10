@@ -36,13 +36,15 @@ const setup = (store: Store<any>): void => {
                 grant_type: 'refresh_token'
               }
             });
-
-            const { accessToken, refreshToken } = rs.data?.attributes;
+            const { id: userId = null } = rs.data || {}
+            const { accessToken, refreshToken, organizationId } = rs.data?.attributes;
 
             store.dispatch('auth/refreshToken', accessToken);
             TokenService.setAuthData({
               accessToken,
-              refreshToken
+              refreshToken,
+              organizationId,
+              userId
             });
 
             return axiosInstance(originalConfig);

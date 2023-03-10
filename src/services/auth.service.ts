@@ -20,16 +20,21 @@ class AuthService {
       .post(AUTH_TOKEN_PATH, fd)
       .then((response) => {
         const data = response?.data?.data || {}
-        const { accessToken = null, refreshToken = null } = data?.attributes || {}
+        const { id: userId = null } = data || {}
+        const { accessToken = null, refreshToken = null, organizationId = null } = data?.attributes || {}
 
         TokenService.setAuthData({
           accessToken: accessToken,
-          refreshToken: refreshToken
+          refreshToken: refreshToken,
+          userId,
+          organizationId
         })
 
         return {
-          accessToken: accessToken,
-          refreshToken: refreshToken
+          accessToken,
+          refreshToken,
+          userId,
+          organizationId
         }
       });
   }
