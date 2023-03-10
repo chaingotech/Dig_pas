@@ -30,6 +30,10 @@ const props = defineProps({
   editableItemId: {
     type: [String, Number],
     default: null
+  },
+  closeModal: {
+    type: Function,
+    default: () => () => true
   }
 })
 
@@ -55,6 +59,7 @@ const save = async () => {
     })
   }
   loading.value = false
+  props.closeModal?.()
 }
 
 </script>

@@ -24,7 +24,7 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import { useRouter } from "vue-router";
 import { useStore } from "vuex";
-import { openModal } from "jenesius-vue-modal"
+import { openModal, closeModal } from "jenesius-vue-modal"
 import Header from "@/components/admin/Header.vue";
 // @ts-ignore
 import PassportsList from "@/components/admin/PassportsList.vue";
@@ -36,13 +36,15 @@ const router = useRouter()
 
 const createItem = () => {
   openModal(PassportForm, {
-    editableItemId: null
+    editableItemId: null,
+    closeModal
   });
 }
 
 const editItem = (id: string) => {
   openModal(PassportForm, {
-    editableItemId: id
+    editableItemId: id,
+    closeModal
   });
 }
 
