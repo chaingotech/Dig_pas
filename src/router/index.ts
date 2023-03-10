@@ -1,5 +1,6 @@
 import {createRouter, createWebHistory, RouteRecordRaw} from 'vue-router'
 import Home from "@/views/Home.vue";
+import TokenService from '@/services/token.service';
 
 const routes: Array<RouteRecordRaw> = [
     {
@@ -26,7 +27,7 @@ const router = createRouter({
 })
 
 router.beforeEach((to) => {
-    if (to?.meta?.requiresAuth && !localStorage?.getItem?.('token')) {
+    if (to?.meta?.requiresAuth && !TokenService.getLocalAccessToken()) {
         return {
             path: '/login'
         }

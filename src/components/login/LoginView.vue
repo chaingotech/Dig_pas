@@ -8,11 +8,11 @@
           <form @submit.prevent="login">
 
             <div class="mb-3">
-              <input v-model="input.username" type="email" class="form-control" id="email" aria-describedby="emailHelp"
+              <input v-model="input.username" type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp"
                 placeholder="User Email">
             </div>
             <div class="mb-3">
-              <input v-model="input.password" type="password" class="form-control" id="password" placeholder="password">
+              <input v-model="input.password" type="password" name="psw" class="form-control" id="password" placeholder="password">
             </div>
             <div class="text-center">
               <button
@@ -44,15 +44,6 @@ export default {
       output: "",
       loading: false
     }
-  },
-  mounted () {
-    this.$store.dispatch('auth/refreshTokens')
-      .then((loggedIn) => {
-        loggedIn && this.$router.push({
-          name: 'admin'
-        })
-      })
-      .catch(() => false)
   },
   methods: {
     async login () {
