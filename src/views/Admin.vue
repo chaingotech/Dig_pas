@@ -20,10 +20,12 @@
 </template>
 
 <script lang="ts" setup>
-import Header from "@/components/admin/Header.vue";
-import PassportsList from "@/components/admin/PassportsList.vue";
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import { useRouter } from "vue-router";
 import { useStore } from "vuex";
+import Header from "@/components/admin/Header.vue";
+// @ts-ignore
+import PassportsList from "@/components/admin/PassportsList.vue";
 
 const store = useStore()
 const router = useRouter()
