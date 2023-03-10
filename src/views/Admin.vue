@@ -1,28 +1,32 @@
 <template>
-  <div class="container admin-page">
-   <div class="d-flex align-items-center justify-content-between">
-     <h3>
-        Admin Page
-      </h3>
+  <Header>
+    <template #actions>
       <button
-        class="btn btn-color px-2"
+        type="button"
+        class="btn btn-secondary btn-sm"
         @click="logout"
       >
-        logout
+        Logout
       </button>
-   </div>
-  </div>
+    </template>
+  </Header>
+  <PassportsList />
 </template>
 
-<script>
-export default {
-  methods: {
-    logout () {
-      this.$store.dispatch('auth/logout')?.catch?.(() => false)
-      this.$router.push({ name: 'home' })
-    }
-  }
+<script lang="ts" setup>
+import Header from "@/components/admin/Header.vue";
+import PassportsList from "@/components/admin/PassportsList.vue";
+import { useRouter } from "vue-router";
+import { useStore } from "vuex";
+
+const store = useStore()
+const router = useRouter()
+
+const logout = () => {
+  store.dispatch('auth/logout')?.catch?.(() => false)
+  router.push({ name: 'home' })
 }
+
 </script>
 
 <style lang="scss">
