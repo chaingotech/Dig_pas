@@ -1,5 +1,7 @@
 import {createRouter, createWebHistory, RouteRecordRaw} from 'vue-router'
 import Home from "@/views/Home.vue";
+import Login from '@/views/Login.vue';
+import Admin from '@/views/Admin.vue';
 import TokenService from '@/services/token.service';
 
 const routes: Array<RouteRecordRaw> = [
@@ -11,12 +13,12 @@ const routes: Array<RouteRecordRaw> = [
     {
         path: '/login',
         name: 'login',
-        component: () => import('@/views/Login.vue')
+        component: Login
     },
     {
         path: '/admin',
         name: 'admin',
-        component: () => import('@/views/Admin.vue'),
+        component: Admin,
         meta: { requiresAuth: true }
     }
 ]
