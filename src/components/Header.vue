@@ -25,7 +25,7 @@
             <img alt="" src="@/assets/icon/hash-icon.svg" style="width: 28px" class="mr-4">
 
             <div class="lh1 bold-500">
-                034234-234-234234–4234234
+                {{ data.data.attributes.name }}
               <br>
               <span class="text-light "> Passport Blockchain Hash</span>
             </div>
