@@ -1,13 +1,13 @@
 <template>
   <section class="d-flex">
     <div class="element-sides element_front p-5 text-white w-50">
-      <img alt="" class="" src="/images/sides/front.jpeg" width="116" data-toggle="modal" data-target="#frontModal"
+      <img alt="" class="" :src="images.front" width="116" data-toggle="modal" data-target="#frontModal"
            data-whatever="@getbootstrap">
       <div class="text-center pt-4 text-capitalize">{{ $t('front') }}</div>
     </div>
     <div class="element-sides element_back p-5 text-white w-50" data-toggle="modal" data-target="#backModal"
          data-whatever="@getbootstrap">
-      <img alt="" class=" " src="/images/sides/back.jpeg" width="116" />
+      <img alt="" class=" " :src="images.back" width="116" />
       <div class="text-center pt-4 text-capitalize">{{ $t('back') }}</div>
     </div>
 
@@ -18,7 +18,7 @@
           <div class="modal-body p-0 m-0">
             <h4 class="text-center my-4 text-uppercase">{{ $t('front') }}</h4>
 
-            <img alt="" class="img-dialog-guitar" src="/images/sides/front.jpeg">
+            <img alt="" class="img-dialog-guitar" :src="images.front">
             <div class="close-dialog py-4 text-uppercase" data-dismiss="modal">{{ $t('close') }}</div>
           </div>
         </div>
@@ -32,7 +32,7 @@
         <div class="modal-content p-0 m-0">
           <div class="modal-body p-0 m-0">
             <h4 class="text-center my-4 text-uppercase">{{ $t('back') }}</h4>
-            <img alt="" class="img-dialog-guitar" src="/images/sides/back.jpeg">
+            <img alt="" class="img-dialog-guitar" :src="images.back">
             <div class="close-dialog py-4" data-dismiss="modal">{{ $t('close') }}</div>
           </div>
         </div>
@@ -44,16 +44,18 @@
 
 </template>
 
-<script lang="ts">
-import {Options, Vue} from 'vue-class-component';
+<script lang="ts" setup>
+import { computed } from 'vue'
+import { useStore } from 'vuex'
 
-@Options({
-  components: {}
-})
-export default class ViewGuitar extends Vue {
+const store = useStore()
 
+const passport = computed(() => store.state.admin.passport)
 
-}
+const images = computed(() => ({
+  front: passport.value?.view?.front || '/images/sides/front.jpeg',
+  back: passport.value?.view?.back || '/images/sides/back.jpeg'
+}))
 </script>
 
 <style lang="scss">

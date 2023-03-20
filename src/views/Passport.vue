@@ -41,7 +41,7 @@
 
     </section>
 
-    <section class="d-flex  justify-content-center align-items-center justify-content-between ">
+    <section class="d-flex  justify-content-center align-items-start justify-content-between ">
       <div class="b-primary-before">
         <img alt="" class="lines" src="@/assets/curves-lines.svg">
       </div>
@@ -150,9 +150,8 @@ import { useStore } from 'vuex'
 import { useRouteParam } from '@/composables'
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import Map from "@/components/Map.vue"
-import ViewGuitar from "@/components/ViewGuitar.vue"
 import GuitarSide from '@/components/GuitarSide.vue'
-// @ts-ignore
+import ViewGuitar from "@/components/ViewGuitar.vue"
 import Header from "@/components/Header.vue"
 
 const loading = ref(false)

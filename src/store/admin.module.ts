@@ -1,10 +1,39 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import AdminService from '@/services/admin.service'
 import TokenService from '@/services/token.service'
+import guitarData from '@/data/guitar.json'
 
 const initialState = {
   items: [] as any[],
   passport: {}
+}
+
+const getDefaultPassportData = () => {
+  const attrs = guitarData.data.attributes
+  const customAttrs = attrs.customAttributes
+  const supplier = attrs.supplier
+
+  return {
+    name: attrs.name,
+    model: customAttrs.model,
+    modelType: 'Acoustic Guitar - SCCCE',
+    code: customAttrs.code,
+    style: customAttrs.style,
+    owner: {
+      firstName: customAttrs.ownerFirstName,
+      lastName: customAttrs.ownerLastName
+    },
+    items: attrs.items,
+    view: {
+      front: '/images/sides/front.jpeg' || customAttrs.frontViewFile,
+      back: '/images/sides/back.jpeg' || customAttrs.backViewFile,
+      main: customAttrs.mainViewFile
+    },
+    supplier: {
+      name: supplier.name,
+      ...supplier.customAttributes
+    }
+  }
 }
 
 export type AdminState = typeof initialState
@@ -16,9 +45,15 @@ const AdminModule = {
     async getPassport ({ commit }: any, id: string) {
       try {
         const { data } = await AdminService.getPassport(id)
-        commit('setPassport', data)
+        const passport = data?.attributes?.customAttributes || {}
+        commit('setPassport', {
+          ...getDefaultPassportData(),
+          ...passport
+        })
       } catch (err) {
         console.error(err)
+        const passport = getDefaultPassportData()
+        commit('setPassport', passport)
       }
     },
 
@@ -71,12 +106,7 @@ const AdminModule = {
   },
   mutations: {
     setPassport (state: AdminState, passport: any) {
-      state.passport = {
-        name: '',
-        model: '',
-        modelType: '',
-        ...(passport?.attributes?.customAttributes || {})
-      }
+      state.passport = passport
     },
     setItems (state: AdminState, items: any[]) {
       state.items = items

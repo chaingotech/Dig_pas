@@ -1,6 +1,6 @@
 <template>
   <aside class="d-flex align-items-end flex-column w-100 " id="guitar-detail">
-    <section class="d-flex align-items-sm-end w-100 justify-content-sm-between">
+    <section class="d-flex align-items-sm-end w-100 justify-content-sm-between justify-content-md-start">
       <section class="px-2 bg-white">
         <div class="d-flex flex-column mr-sm-5  mr-sm-auto bg-white position-relative">
           <img v-if="active.isDefault" alt="" class="guitar-img bg-white m-5" src="@/assets/guitar/full.svg">

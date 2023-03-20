@@ -17,7 +17,7 @@
           <input v-model="model" id="passport-model" type="text" class="form-control" placeholder="Model">
         </div>
         <div class="mb-3">
-          <label for="passport-modelType" class="passport-form__label">Model type</label>
+          <label for="passport-modelType" class="passport-form__label">Guitar type</label>
           <input v-model="modelType" id="passport-modelType" type="text" class="form-control" placeholder="Model type">
         </div>
         <div class="d-flex justify-content-end">

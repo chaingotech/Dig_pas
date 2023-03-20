@@ -47,9 +47,10 @@
 
 <script lang="ts" setup>
 import { ref, getCurrentInstance, computed } from 'vue'
+import { useRouter } from "vue-router"
 import { useStore } from 'vuex'
 import { useRouteParam } from '@/composables'
-import Header from "@/components/admin/Header.vue";
+import Header from "@/components/admin/Header.vue"
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 // @ts-ignore
 import PassportForm from '@/components/admin/PassportForm.vue'
@@ -87,12 +88,20 @@ const passportRoute = computed(() => ({
 fetchData()
 
 const passport = computed(() => store.state.admin.passport)
+const router = useRouter()
+const logout = () => {
+  store.dispatch('auth/logout')?.catch?.(() => false)
+  router.push({ name: 'home' })
+}
 </script>
 
 <style lang="scss">
 .edit-passport {
   &__form {
     border: none;
+    &.card {
+      width: 700px !important;
+    }
   }
 }
 </style>
