@@ -17,7 +17,10 @@
       </button>
     </template>
   </Header>
-  <PassportsList @edit="editItem" />
+  <PassportsList
+    @edit="editItem"
+    @generate-qrcode="generateQrCode"
+  />
 </template>
 
 <script lang="ts" setup>
@@ -30,6 +33,7 @@ import Header from "@/components/admin/Header.vue";
 import PassportsList from "@/components/admin/PassportsList.vue";
 // @ts-ignore
 import PassportForm from "@/components/admin/PassportForm.vue";
+import QRCodeModal from "@/components/admin/QRCodeModal.vue";
 
 const store = useStore()
 const router = useRouter()
@@ -45,6 +49,12 @@ const editItem = (id: string) => {
   openModal(PassportForm, {
     editableItemId: id,
     item: store.state.admin.items.find((i: any) => i.id === id)?.attributes?.customAttributes || {},
+    closeModal
+  });
+}
+const generateQrCode = (id: string) => {
+  openModal(QRCodeModal, {
+    id,
     closeModal
   });
 }

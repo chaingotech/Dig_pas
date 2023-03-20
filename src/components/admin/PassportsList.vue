@@ -35,12 +35,25 @@
                 <div class="d-flex align-items-center mr-2">
                   <router-link
                     type="button"
-                    class="btn btn-sm btn-primary mr-2"
+                    class="btn btn-sm btn-primary mr-3"
                     :to="{ name: 'passport', params: { passport: item.id } }"
                   >
                     View
                   </router-link>
-                  <button type="button" class="btn btn-sm btn-outline-primary mr-2" @click="() => $emit('edit', item.id)">Edit</button>
+                  <button
+                    type="button"
+                    class="btn btn-sm btn-icon btn-outline-primary mr-3"
+                    @click="() => $emit('generate-qrcode', item.id)"
+                  >
+                    <img alt="" src="@/assets/icon/qrcode.svg" style="width: 20px">
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-sm btn-outline-primary mr-3"
+                    @click="() => $emit('edit', item.id)"
+                  >
+                    Edit
+                  </button>
                   <button
                     type="button"
                     class="btn btn-sm btn-outline-danger"
@@ -110,7 +123,6 @@ const removeItem = async (id: string): Promise<void> => {
 
   .list-group-item {
   }
-
   .list li {
     list-style: none;
     padding: 10px;
