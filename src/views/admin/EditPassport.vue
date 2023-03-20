@@ -54,10 +54,13 @@ import Header from "@/components/admin/Header.vue"
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 // @ts-ignore
 import PassportForm from '@/components/admin/PassportForm.vue'
+import AdminService from '@/services/admin.service';
+import { getDefaultPassportData } from '@/store/admin.module';
 
 const passportId = useRouteParam('passport')
 const loading = ref(false)
 const store = useStore()
+const router = useRouter()
 
 const fetchData = async () => {
   const internalInstance = getCurrentInstance();
@@ -65,11 +68,20 @@ const fetchData = async () => {
     loading.value = true
     internalInstance?.appContext?.config?.globalProperties?.$Progress?.start?.();
     const passportId = useRouteParam('passport')
-    console.log(passportId.value)
-    store.dispatch('admin/getPassport', passportId.value)
+
+    const { data } = await AdminService.getPassport(passportId.value)
+    const passport = data?.attributes?.customAttributes || {}
+    store.commit('admin/setPassport', {
+      ...getDefaultPassportData(),
+      ...passport
+    })
+    // store.dispatch('admin/getPassport', passportId.value)
     // await new Promise(resolve => setTimeout(resolve))
   } catch (err) {
+    internalInstance?.appContext?.config?.globalProperties?.$Progress?.finish?.();
     console.error(err)
+    alert(`Passport "${passportId.value}" not found.`)
+    router.replace({ name: 'admin' })
   } finally {
     internalInstance?.appContext?.config?.globalProperties?.$Progress?.finish?.();
     setTimeout(() => {
@@ -88,7 +100,7 @@ const passportRoute = computed(() => ({
 fetchData()
 
 const passport = computed(() => store.state.admin.passport)
-const router = useRouter()
+
 const logout = () => {
   store.dispatch('auth/logout')?.catch?.(() => false)
   router.push({ name: 'home' })

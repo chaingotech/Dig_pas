@@ -8,7 +8,7 @@ const initialState = {
   passport: {}
 }
 
-const getDefaultPassportData = () => {
+export const getDefaultPassportData = () => {
   const attrs = guitarData.data.attributes
   const customAttrs = attrs.customAttributes
   const supplier = attrs.supplier
