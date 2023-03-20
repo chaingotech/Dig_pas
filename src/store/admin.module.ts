@@ -3,7 +3,8 @@ import AdminService from '@/services/admin.service'
 import TokenService from '@/services/token.service'
 
 const initialState = {
-  items: [] as any[]
+  items: [] as any[],
+  passport: {}
 }
 
 export type AdminState = typeof initialState
@@ -12,6 +13,15 @@ const AdminModule = {
   namespaced: true,
   state: initialState,
   actions: {
+    async getPassport ({ commit }: any, id: string) {
+      try {
+        const { data } = await AdminService.getPassport(id)
+        commit('setPassport', data)
+      } catch (err) {
+        console.error(err)
+      }
+    },
+
     async fetchItems ({ commit }: any) {
       try {
         const { data } = await AdminService.getList()
@@ -60,6 +70,14 @@ const AdminModule = {
     },
   },
   mutations: {
+    setPassport (state: AdminState, passport: any) {
+      state.passport = {
+        name: '',
+        model: '',
+        modelType: '',
+        ...(passport?.attributes?.customAttributes || {})
+      }
+    },
     setItems (state: AdminState, items: any[]) {
       state.items = items
     },

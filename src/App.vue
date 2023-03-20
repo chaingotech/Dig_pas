@@ -2,6 +2,7 @@
   <div>
     <router-view />
     <WidgetContainerModal />
+    <vue-progress-bar></vue-progress-bar>
   </div>
 </template>
 

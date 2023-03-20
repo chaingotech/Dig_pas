@@ -1,12 +1,27 @@
 <template>
   <div class="card passport-form" style="width: 18rem;">
     <div class="card-body">
-      <h5 class="card-title mb-3">{{ formTitile }}</h5>
+      <h5
+        v-if="!props.hideTitle"
+        class="card-title mb-3"
+      >
+        {{ formTitile }}
+      </h5>
       <form @submit.prevent="save">
         <div class="mb-3">
-          <input v-model="title" type="text" class="form-control" placeholder="Title">
+          <label for="passport-name" class="passport-form__label">Name</label>
+          <input v-model="name" id="passport-name" type="text" class="form-control" placeholder="Name">
+        </div>
+        <div class="mb-3">
+          <label for="passport-model" class="passport-form__label">Model</label>
+          <input v-model="model" id="passport-model" type="text" class="form-control" placeholder="Model">
+        </div>
+        <div class="mb-3">
+          <label for="passport-modelType" class="passport-form__label">Model type</label>
+          <input v-model="modelType" id="passport-modelType" type="text" class="form-control" placeholder="Model type">
         </div>
         <div class="d-flex justify-content-end">
+          <slot name="actions" />
           <button
             type="submit"
             class="btn btn-primary btn-sm"
@@ -31,35 +46,47 @@ const props = defineProps({
     type: [String, Number],
     default: null
   },
+  item: {
+    type: Object,
+    default: () => ({})
+  },
+  hideTitle: {
+    type: Boolean,
+    default: false
+  },
   closeModal: {
     type: Function,
     default: () => () => true
   }
 })
-
 const itemId = computed(() => props.editableItemId)
 const formTitile = computed(() => props.editableItemId ? 'Edit passport' : 'Create passport')
-const item = computed(() => props.editableItemId && store.state.admin.items.find((i: any) => i.id === props.editableItemId))
 
 const loading = ref(false)
-const title = ref(item?.value?.attributes?.customAttributes?.title || '')
+const name = ref(props.item?.name || '')
+const model = ref(props.item?.model || '')
+const modelType = ref(props.item?.modelType || 'Acoustic Guitar - SCCCE')
 
 const save = async () => {
   loading.value = true
-  if (item?.value?.id) {
+  if (itemId.value) {
     await store.dispatch('admin/updateItem', {
-      id: item.value.id,
+      id: itemId.value,
       data: {
-        title: title.value
+        name: name.value,
+        model: model.value,
+        modelType: modelType.value
       }
     })
   } else {
     await store.dispatch('admin/createItem', {
-      title: title.value
+      name: name.value,
+      model: model.value,
+      modelType: modelType.value
     })
   }
   loading.value = false
-  props.closeModal?.()
+  props?.closeModal?.()
 }
 
 </script>
@@ -67,6 +94,10 @@ const save = async () => {
 <style lang="scss">
 .passport-form {
   font-family: 'Roboto', sans-serif;
+  &__label {
+    font-size: 12px;
+    color: grey;
+  }
   &.card {
     width: 500px !important;
   }

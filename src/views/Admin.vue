@@ -44,6 +44,7 @@ const createItem = () => {
 const editItem = (id: string) => {
   openModal(PassportForm, {
     editableItemId: id,
+    item: store.state.admin.items.find((i: any) => i.id === id)?.attributes?.customAttributes || {},
     closeModal
   });
 }

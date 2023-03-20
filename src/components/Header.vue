@@ -13,9 +13,11 @@
           <img alt="" src="@/assets/featured-img.svg" id="featured-img-sm">
 
           <div class="first_info">
-            <div class="text-white text-light">Acoustic Guitar - SCCCE</div>
+            <div class="text-white text-light">
+              {{ props.modelType || 'Acoustic Guitar - SCCCE' }}
+            </div>
             <h1 class="text-white text-uppercase bold-900 lh1 ">
-              {{ data.data.attributes.customAttributes.model }}
+              {{ props.model }}
             </h1>
           </div>
         </div>
@@ -25,9 +27,9 @@
             <img alt="" src="@/assets/icon/hash-icon.svg" style="width: 28px" class="mr-4">
 
             <div class="lh1 bold-500">
-                {{ data.data.attributes.name }}
+                {{ props.name }}
               <br>
-              <span class="text-light "> Passport Blockchain Hash</span>
+              <span class="text-light">Passport Blockchain Hash</span>
             </div>
             <a
               class="ml-4 ml-auto"
@@ -45,11 +47,11 @@
               your friends
             </div>
             <div class="ml-auto">
-              <a :href="urlFacebook()"
+              <a :href="urlFacebook"
                  onclick="return !window.open(this.href, 'Facebook', 'width=640,height=580')">
                 <img alt="" src="@/assets/social/social-facebook.svg" style="width: 30px" class="mr-2">
               </a>
-              <a :href="urlTwitter()"
+              <a :href="urlTwitter"
                  onclick="return !window.open(this.href, 'Twitter', 'width=640,height=580')">
                 <img alt="" src="@/assets/social/social-twitter.svg" style="width: 30px" class="mr-2">
               </a>
@@ -65,28 +67,24 @@
 
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue'
-import data from "@/data/guitar.json";
+<script lang="ts" setup>
+import { computed, ref, defineProps } from 'vue'
+// import guitarData from "@/data/guitar.json";
 
-export default defineComponent({
-  setup() {
-    const url = 'https://www.google.com'
 
-    const urlFacebook = (): string => {
-      return `https://www.facebook.com/sharer/sharer.php?kid_directed_site=0&sdk=joey&u=${url}&display=popup&ref=plugin&src=share_button`;
-    }
+const props = defineProps<{
+  modelType: string;
+  model: string;
+  name: string;
+}>()
 
-    const urlTwitter = (): string => {
-      const title = `Passport - ${url} - @guzmle2`;
-      return `https://twitter.com/intent/tweet?text=${title}&source=Shareaholic&related=shareaholic`;
-    }
-    return {
-      urlFacebook,
-      urlTwitter,
-      data,
-    }
-  }
+const url = 'https://www.google.com'
+const urlFacebook = computed<string>(() => {
+  return `https://www.facebook.com/sharer/sharer.php?kid_directed_site=0&sdk=joey&u=${url}&display=popup&ref=plugin&src=share_button`
+})
+const urlTwitter = computed<string>(() => {
+  const title = `Passport - ${url} - @guzmle2`;
+  return `https://twitter.com/intent/tweet?text=${title}&source=Shareaholic&related=shareaholic`;
 })
 </script>
 

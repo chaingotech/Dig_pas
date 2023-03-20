@@ -23,6 +23,12 @@ const routes: Array<RouteRecordRaw> = [
         name: 'admin',
         component: () => import('@/views/Admin.vue'),
         meta: { requiresAuth: true }
+    },
+    {
+        path: '/admin/:passport',
+        name: 'edit-passport',
+        component: () => import('@/views/admin/EditPassport.vue'),
+        meta: { requiresAuth: true }
     }
 ]
 

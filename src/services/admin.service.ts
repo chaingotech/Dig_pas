@@ -7,6 +7,11 @@ class AdminService {
     return axiosInstance.get(PASSPORTS_PATH)
       .then(({ data }) => data)
   }
+
+  getPassport (id: string): Promise<{ data: any }> {
+    return axiosInstance.get(`${PASSPORTS_PATH}/${id}`)
+      .then(({ data }) => data)
+  }
   
   createItem ({
     userId,

@@ -20,6 +20,10 @@ html {
     letter-spacing: 0.1rem;
 }
 
+.d-none {
+  display: none !important;
+}
+
 [class^="icon-"], [class*=" icon-"] {
   /* use !important to prevent issues with browser extensions that change fonts */
   font-family: 'icomoon' !important;

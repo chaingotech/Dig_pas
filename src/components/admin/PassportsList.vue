@@ -11,7 +11,7 @@
             >
               <div class="d-flex flex-row align-items-center">
                 <div class="ml-2">
-                  <h6 class="mb-0">{{ item.attributes.customAttributes.title || '-' }}</h6>
+                  <h6 class="mb-0">{{ item.attributes.customAttributes.name || '-' }}</h6>
                   <div class="d-flex flex-row mt-1 text-black-50 date-time">
                     <div>
                       <span class="ml-2 text-secondary">
@@ -20,9 +20,26 @@
                     </div>
                   </div>
                 </div>
+                <div class="ml-2">
+                  <h6 class="mb-0">ID</h6>
+                  <div class="d-flex flex-row mt-1 text-black-50 date-time">
+                    <div>
+                      <span class="ml-2 text-secondary">
+                        {{ item.id }}
+                      </span>
+                    </div>
+                  </div>
+                </div>
               </div>
               <div class="d-flex flex-row align-items-center">
                 <div class="d-flex align-items-center mr-2">
+                  <router-link
+                    type="button"
+                    class="btn btn-sm btn-primary mr-2"
+                    :to="{ name: 'passport', params: { passport: item.id } }"
+                  >
+                    View
+                  </router-link>
                   <button type="button" class="btn btn-sm btn-outline-primary mr-2" @click="() => $emit('edit', item.id)">Edit</button>
                   <button
                     type="button"

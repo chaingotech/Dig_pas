@@ -1,6 +1,10 @@
 <template>
-  <main class="main-content  ">
-    <Header/>
+  <main class="main-content" :class="loading && 'd-none'">
+    <Header
+      :name="passport.name"
+      :model="passport.model"
+      :modelType="passport.modelType"
+    />
     <section class="d-flex justify-content-end align-item-end flex-column-sm">
       <div class="text-center align-self-md-end my-5 mr-sm-5">
         <h1 class="bold-900">VIEW</h1>
@@ -140,18 +144,42 @@
 
 </template>
 
-<script lang="ts">
-import {Options, Vue} from 'vue-class-component';
-import Map from "@/components/Map.vue";
-import ViewGuitar from "@/components/ViewGuitar.vue";
-import Header from "@/components/Header.vue";
-import GuitarSide from '@/components/GuitarSide.vue';
+<script lang="ts" setup>
+import { ref, computed, getCurrentInstance } from 'vue'
+import { useStore } from 'vuex'
+import { useRouteParam } from '@/composables'
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+import Map from "@/components/Map.vue"
+import ViewGuitar from "@/components/ViewGuitar.vue"
+import GuitarSide from '@/components/GuitarSide.vue'
+// @ts-ignore
+import Header from "@/components/Header.vue"
 
-@Options({
-  components: {Header, ViewGuitar, Map, GuitarSide},
-})
-export default class Home extends Vue {
+const loading = ref(false)
+const store = useStore()
+
+const fetchData = async () => {
+  const internalInstance = getCurrentInstance();
+  try {
+    loading.value = true
+    internalInstance?.appContext?.config?.globalProperties?.$Progress?.start?.();
+    const passportId = useRouteParam('passport')
+    console.log(passportId.value)
+    store.dispatch('admin/getPassport', passportId.value)
+    // await new Promise(resolve => setTimeout(resolve))
+  } catch (err) {
+    console.error(err)
+  } finally {
+    internalInstance?.appContext?.config?.globalProperties?.$Progress?.finish?.();
+    setTimeout(() => {
+      loading.value = false
+    }, 300)
+  }
 }
+
+fetchData()
+
+const passport = computed(() => store.state.admin.passport)
 </script>
 
 <style lang="scss">
