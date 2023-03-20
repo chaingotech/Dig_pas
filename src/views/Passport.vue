@@ -5,143 +5,145 @@
       :model="passport.model"
       :modelType="passport.modelType"
     />
-    <section class="d-flex justify-content-end align-item-end flex-column-sm">
-      <div class="text-center align-self-md-end my-5 mr-sm-5">
-        <h1 class="bold-900">VIEW</h1>
-        <span>Click on any image to
-              <br class="hidden-xs ">
-              enlarge it
-                        <span class="icon-arrow-right t-primary ml-2" style="font-size: 10px"></span>
+    <template v-if="!loading">
 
-            </span>
+      <section class="d-flex justify-content-end align-item-end flex-column-sm">
+        <div class="text-center align-self-md-end my-5 mr-sm-5">
+          <h1 class="bold-900">VIEW</h1>
+          <span>Click on any image to
+                <br class="hidden-xs ">
+                enlarge it
+                          <span class="icon-arrow-right t-primary ml-2" style="font-size: 10px"></span>
+
+              </span>
 
 
-      </div>
-      <ViewGuitar/>
-    </section>
-
-    <section class="d-flex  justify-content-center align-items-center justify-content-between  flex-column-sm ">
-      <div class="b-primary-before">
-        <!--        <img alt="" class="lines" src="@/assets/curves-lines.svg">-->
-        <img alt="" class="" src="@/assets/medusa.svg" style="position: absolute; top:0; right: 0">
-      </div>
-      <aside class="mr-5 mt-5">
-        <img id="origin-img" class="w-sm-100 " alt="" src="@/assets/imgs/origin.jpeg">
-
-      </aside>
-      <aside class=" text-white mr-5 mb-5 ml-1">
-        <h1 class="bold-900 lh1 text-uppercase text-white mr-5 mt-5">Origin</h1>
-
-        <div class="box-info-text mr-5">
-          Learn about the positive impact stories surrounding the places where the wood for this guitar was harvested,
-          from the forest to your hands.
         </div>
-      </aside>
-
-
-    </section>
-
-    <section class="d-flex  justify-content-center align-items-start justify-content-between ">
-      <div class="b-primary-before">
-        <img alt="" class="lines" src="@/assets/curves-lines.svg">
-      </div>
-      <GuitarSide />
-    </section>
-    <Map/>
-    <!--        <br>-->
-    <section id="section-source" class="d-flex flex-column justify-content-center ">
-      <div class="d-flex  justify-content-around flex-column-sm">
-        <aside class="justify-content-center align-items-center d-flex flex-column border-dotted w-sm-100">
-          <br>
-          <img alt="" src="@/assets/betdell-logo.png"> <br>
-          <h4 class="text-white text-center">THE SEED-TO-SONG <br>JOURNEY</h4><br>
-
-          <a href="https://bedellguitars.com/seed-to-song/the-seed-to-song-journey" target="_blank">
-            <button class="d-block">More Info</button>
-          </a>
-          <br>
-        </aside>
-        <aside class=" justify-content-center align-items-center d-flex flex-column border-dotted w-sm-100">
-          <br>
-          <img alt="" src="@/assets/betdell-logo.png"><br>
-          <h4 class="text-white text-center">THE TONEWOOD <br> CERTIFICATION PROJECT</h4><br>
-
-          <a href="https://bedellguitars.com/seed-to-song/the-tonewood-certification-project" target="_blank">
-            <button class="d-block">More Info</button>
-          </a>
-          <br>
-        </aside>
-      </div>
-      <br>
-      <section class="text-white text-center">
-        <h1 class="text-uppercase bold-900">
-          Certifications
-        </h1>
-        <div class="bold-500">Contributing to preserve the world's forests and biodiversity</div>
+        <ViewGuitar/>
       </section>
-    </section>
 
-    <section id="local" class="d-flex    position-relative flex-column-sm">
-      <aside class="aside-from">
-        <div class="img-from">
-          <img alt="" src="@/assets/imgs/from.png">
-
+      <section class="d-flex  justify-content-center align-items-center justify-content-between  flex-column-sm ">
+        <div class="b-primary-before">
+          <!--        <img alt="" class="lines" src="@/assets/curves-lines.svg">-->
+          <img alt="" class="" src="@/assets/medusa.svg" style="position: absolute; top:0; right: 0">
         </div>
-        <div class="img-local">
-          <img alt="" src="@/assets/imgs/to-local.png">
+        <aside class="mr-5 mt-5">
+          <img id="origin-img" class="w-sm-100 " alt="" src="@/assets/imgs/origin.jpeg">
 
+        </aside>
+        <aside class=" text-white mr-5 mb-5 ml-1">
+          <h1 class="bold-900 lh1 text-uppercase text-white mr-5 mt-5">Origin</h1>
+
+          <div class="box-info-text mr-5">
+            Learn about the positive impact stories surrounding the places where the wood for this guitar was harvested,
+            from the forest to your hands.
+          </div>
+        </aside>
+
+
+      </section>
+
+      <section class="d-flex  justify-content-center align-items-start justify-content-between ">
+        <div class="b-primary-before">
+          <img alt="" class="lines" src="@/assets/curves-lines.svg">
         </div>
-        <div class="img-crasftman">
-          <img alt="" src="@/assets/imgs/crasftman.png">
+        <GuitarSide :items="passport.items" />
+      </section>
+      <Map/>
+      <!--        <br>-->
+      <section id="section-source" class="d-flex flex-column justify-content-center ">
+        <div class="d-flex  justify-content-around flex-column-sm">
+          <aside class="justify-content-center align-items-center d-flex flex-column border-dotted w-sm-100">
+            <br>
+            <img alt="" src="@/assets/betdell-logo.png"> <br>
+            <h4 class="text-white text-center">THE SEED-TO-SONG <br>JOURNEY</h4><br>
 
-        </div>
-      </aside>
-      <aside class="m-3">
-        <h1 class="bold-900 lh1 "> Why is the <br class="hidden-xs">Digital <br class="hidden-xs"> Passport <br
-            class="hidden-xs">important?</h1>
+            <a href="https://bedellguitars.com/seed-to-song/the-seed-to-song-journey" target="_blank">
+              <button class="d-block">More Info</button>
+            </a>
+            <br>
+          </aside>
+          <aside class=" justify-content-center align-items-center d-flex flex-column border-dotted w-sm-100">
+            <br>
+            <img alt="" src="@/assets/betdell-logo.png"><br>
+            <h4 class="text-white text-center">THE TONEWOOD <br> CERTIFICATION PROJECT</h4><br>
 
-        <div class="box-info-text">
-          Contributing to preserve the world's forests and biodiversity
+            <a href="https://bedellguitars.com/seed-to-song/the-tonewood-certification-project" target="_blank">
+              <button class="d-block">More Info</button>
+            </a>
+            <br>
+          </aside>
         </div>
         <br>
-        <a class="t-primary link-primary" href="https://forest-chain.com/en/digital-passport/"
-           target="_blank">{{ $t('read_more') }}
-          <span class="icon-arrow-right t-primary " style="font-size: 10px"></span>
-        </a>
-        <small class="d-block">Will open in a new window, external link</small>
+        <section class="text-white text-center">
+          <h1 class="text-uppercase bold-900">
+            Certifications
+          </h1>
+          <div class="bold-500">Contributing to preserve the world's forests and biodiversity</div>
+        </section>
+      </section>
 
-      </aside>
-    </section>
+      <section id="local" class="d-flex    position-relative flex-column-sm">
+        <aside class="aside-from">
+          <div class="img-from">
+            <img alt="" src="@/assets/imgs/from.png">
 
-    <br class="hidden-xs"><br class="hidden-xs"><br class="hidden-xs">
+          </div>
+          <div class="img-local">
+            <img alt="" src="@/assets/imgs/to-local.png">
 
-    <section id="close-area" class="d-flex align-items-center justify-content-end text-center flex-column p-5">
-      <span class="icon-plant text-center" style="font-size: 60px"></span>
-      <br>
-      <h4 class="text-white lh1">
-        “The conservation of our natural resources and their proper use,<br>constitute the fundamental problem which underlies almost every other problem.”
-      </h4>
-    </section>
-    <section id="footer" class="d-flex justify-content-between px-5 py-3 flex-column-sm">
-      <div class="d-flex flex-column-sm align-items-sm-center">
-        <img alt="" class="bg-white logo mb-2 only-xs" src="@/assets/logo-bedell.png">
+          </div>
+          <div class="img-crasftman">
+            <img alt="" src="@/assets/imgs/crasftman.png">
 
-        <div class="footer_copy"><small>© 2021 Bedell Guitars Digital Passport. Blockchain technology powered
-          by</small></div>
+          </div>
+        </aside>
+        <aside class="m-3">
+          <h1 class="bold-900 lh1 "> Why is the <br class="hidden-xs">Digital <br class="hidden-xs"> Passport <br
+              class="hidden-xs">important?</h1>
+
+          <div class="box-info-text">
+            Contributing to preserve the world's forests and biodiversity
+          </div>
+          <br>
+          <a class="t-primary link-primary" href="https://forest-chain.com/en/digital-passport/"
+            target="_blank">{{ $t('read_more') }}
+            <span class="icon-arrow-right t-primary " style="font-size: 10px"></span>
+          </a>
+          <small class="d-block">Will open in a new window, external link</small>
+
+        </aside>
+      </section>
+
+      <br class="hidden-xs"><br class="hidden-xs"><br class="hidden-xs">
+
+      <section id="close-area" class="d-flex align-items-center justify-content-end text-center flex-column p-5">
+        <span class="icon-plant text-center" style="font-size: 60px"></span>
+        <br>
+        <h4 class="text-white lh1">
+          “The conservation of our natural resources and their proper use,<br>constitute the fundamental problem which underlies almost every other problem.”
+        </h4>
+      </section>
+      <section id="footer" class="d-flex justify-content-between px-5 py-3 flex-column-sm">
+        <div class="d-flex flex-column-sm align-items-sm-center">
+          <img alt="" class="bg-white logo mb-2 only-xs" src="@/assets/logo-bedell.png">
+
+          <div class="footer_copy"><small>© 2021 Bedell Guitars Digital Passport. Blockchain technology powered
+            by</small></div>
+          <div class="footer_logo">
+            <img alt="" class="mx-2" style="max-width: 120px" src="@/assets/logo-forestchain.png">
+          </div>
+
+        </div>
         <div class="footer_logo">
-          <img alt="" class="mx-2" style="max-width: 120px" src="@/assets/logo-forestchain.png">
+          <a href="https://www.facebook.com/forestChainCo" target="_blank"> <img alt="" class="m-2" src="@/assets/icon/facebook.svg"></a>
+          <a href="https://twitter.com/ForestChainco" target="_blank"><img alt="" class="m-2" src="@/assets/icon/twitter.svg"></a>
+
         </div>
 
-      </div>
-      <div class="footer_logo">
-        <a href="https://www.facebook.com/forestChainCo" target="_blank"> <img alt="" class="m-2" src="@/assets/icon/facebook.svg"></a>
-        <a href="https://twitter.com/ForestChainco" target="_blank"><img alt="" class="m-2" src="@/assets/icon/twitter.svg"></a>
-
-      </div>
-
-    </section>
+      </section>
+    </template>
   </main>
-
 </template>
 
 <script lang="ts" setup>
@@ -156,6 +158,8 @@ import Header from "@/components/Header.vue"
 
 const loading = ref(false)
 const store = useStore()
+
+const passport = computed(() => store.state.admin.passport)
 
 const fetchData = async () => {
   const internalInstance = getCurrentInstance();
@@ -178,7 +182,6 @@ const fetchData = async () => {
 
 fetchData()
 
-const passport = computed(() => store.state.admin.passport)
 </script>
 
 <style lang="scss">

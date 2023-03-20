@@ -84,9 +84,7 @@ const fetchData = async () => {
     router.replace({ name: 'admin' })
   } finally {
     internalInstance?.appContext?.config?.globalProperties?.$Progress?.finish?.();
-    setTimeout(() => {
-      loading.value = false
-    }, 300)
+    loading.value = false
   }
 }
 
@@ -111,9 +109,6 @@ const logout = () => {
 .edit-passport {
   &__form {
     border: none;
-    &.card {
-      width: 700px !important;
-    }
   }
 }
 </style>

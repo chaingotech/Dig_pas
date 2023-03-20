@@ -2,13 +2,14 @@ import SideData from "@/domain/model/SideData";
 
 class SideDataFactory {
   fromJson (data: any): SideData {
+    console.log('data from json', { data })
     const sideData = {
-      partName: data.title,
-      partImage: data.img,
-      countryName: data.data.attributes.customAttributes.origin,
-      specieName: data.data.attributes.customAttributes.specie.text,
-      specieScientificName: data.data.attributes.customAttributes.specie.value,
-      default: data.default,
+      partName: data?.partName,
+      partImage: data?.img,
+      countryName: data?.data?.countryName,
+      specieName: data?.data?.specieName,
+      specieScientificName: data?.data?.specieScientificName,
+      default: data?.default,
     }
 
     return new SideData(sideData);

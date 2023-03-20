@@ -50,66 +50,60 @@
   </aside>
 </template>
 
-<script lang="ts">
-import { ref, SetupContext } from "vue"
+<script lang="ts" setup>
+import { ref, defineProps, defineEmits } from "vue"
 import Sides from "@/components/Sides.vue";
-import data from "@/data/guitar.json";
+// import data from "@/data/guitar.json";
 import SideDataFactory from '@/domain/service/SideDataFactory';
 import SideData from '@/domain/model/SideData';
 
-export default {
-  name: "Guitar",
-  emits: [ 'itemSelected' ],
-  components: {
-    Sides
-  },
-  setup(_: unknown, { emit }: SetupContext): Record<string,unknown> {
-    const active = ref()
+const active = ref()
 
-    const items = data.data.attributes.items
+const props = defineProps<{
+  items: {
+    partName: string;
+    countryName: string;
+    specieName: string;
+    specieScientificName: string;
+  }[]
+}>()
+const emit = defineEmits(['itemSelected'])
 
-    const getItemByTitle = (title: string): any => {
-      return items.find(item => item.attributes.customAttributes.partName === title)
-    }
-
-    const isWeb = () => {
-      return window.innerWidth > 800
-    }
-
-    const components = [
-      { title: "headplate", img: require('@/assets/guitar/headplate.svg'), data: {}, default: false },
-      { title: "fingerboard", img: require('@/assets/guitar/fingerboard.svg'), data: {}, default: false },
-      { title: "heel", img: require('@/assets/guitar/heel.svg'), data: {}, default: false },
-      { title: "bridge", img: require('@/assets/guitar/bridge.svg'), data: {}, default: false },
-      { title: "top", img: require('@/assets/guitar/top.svg'), data: {}, default: false },
-      { title: "neck", img: require('@/assets/guitar/neck.svg'), data: {}, default: false },
-      { title: "back", img: require('@/assets/guitar/back.svg'), data: {}, default: false },
-      { title: "side", img: require('@/assets/guitar/sides.svg'), data: {}, default: false }
-    ]
-
-    let convertedComponents: Array<SideData>;
-
-    components.map(item => {
-      item.data = getItemByTitle(item.title)
-    })
-
-    convertedComponents = components.map(item => SideDataFactory.fromJson(item))
-
-    const activeComponent = (item: any): void => {
-      emit('itemSelected', item)
-      active.value = item == active.value ? null : item
-    }
-
-    activeComponent(SideDataFactory.getDefault());
-
-    return {
-      convertedComponents,
-      active,
-      isWeb,
-      activeComponent,
-    }
-  }
+const getItemByTitle = (partName: string): any => {
+  return props.items.find(item => item.partName === partName)
 }
+
+const isWeb = () => {
+  return window.innerWidth > 800
+}
+
+const components = [
+  { partName: "headplate", img: require('@/assets/guitar/headplate.svg'), data: {}, default: false },
+  { partName: "fingerboard", img: require('@/assets/guitar/fingerboard.svg'), data: {}, default: false },
+  { partName: "heel", img: require('@/assets/guitar/heel.svg'), data: {}, default: false },
+  { partName: "bridge", img: require('@/assets/guitar/bridge.svg'), data: {}, default: false },
+  { partName: "top", img: require('@/assets/guitar/top.svg'), data: {}, default: false },
+  { partName: "neck", img: require('@/assets/guitar/neck.svg'), data: {}, default: false },
+  { partName: "back", img: require('@/assets/guitar/back.svg'), data: {}, default: false },
+  { partName: "side", img: require('@/assets/guitar/sides.svg'), data: {}, default: false }
+]
+
+let convertedComponents: Array<SideData>;
+
+components.map(item => {
+  item.data = getItemByTitle(item.partName)
+})
+
+convertedComponents = components.map(item => SideDataFactory.fromJson(item))
+
+console.log('convertedComponents', convertedComponents, props.items)
+
+const activeComponent = (item: any): void => {
+  emit('itemSelected', item)
+  active.value = item == active.value ? null : item
+}
+
+activeComponent(SideDataFactory.getDefault());
 </script>
 
 <style lang="scss">

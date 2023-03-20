@@ -58,11 +58,11 @@ export default class SideData {
   }
 
   get getCountryLink (): string | null {
-    return this.countryData[this.countryName].link;
+    return this.countryData?.[this.countryName]?.link || 'https://bedellguitars.com/blog/bedell-guitars-and-the-worlds-largest-library-of-brazilian-rosewood'
   }
 
   get getCountryImage (): string {
-    return this.countryData[this.countryName].img;
+    return this.countryData?.[this.countryName]?.img || '/images/countries/Brazil.jpg'
   }
 
   get getSpecieName (): string {
@@ -74,11 +74,11 @@ export default class SideData {
   }
 
   get getSpecieLink (): string {
-    return this.specieData[this.specieName].link;
+    return this.specieData?.[this.specieName]?.link || 'https://www.wood-database.com/brazilian-rosewood/'
   }
 
   get getSpecieImage (): string {
-    return this.specieData[this.specieName].img;
+    return this.specieData?.[this.specieName]?.img || '/images/species/Brazilian-Rosewood.jpg'
   }
 
   get isDefault (): boolean {

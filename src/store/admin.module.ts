@@ -23,7 +23,12 @@ export const getDefaultPassportData = () => {
       firstName: customAttrs.ownerFirstName,
       lastName: customAttrs.ownerLastName
     },
-    items: attrs.items,
+    items: attrs.items.map(({ attributes: { customAttributes } }) => ({
+      partName: customAttributes.partName,
+      countryName: customAttributes.origin,
+      specieName: customAttributes.specie.text,
+      specieScientificName: customAttributes.specie.value
+    })),
     view: {
       front: '/images/sides/front.jpeg' || customAttrs.frontViewFile,
       back: '/images/sides/back.jpeg' || customAttrs.backViewFile,
