@@ -57,8 +57,10 @@ export default {
       try {
         this.loading = true
         await this.$store.dispatch('auth/login', this.input)
+        const { next, ...params } = this.$route.params
         this.$router.push({
-          name: 'admin'
+          name: next || 'admin',
+          params
         })
       } catch (err) {
         console.error(err)

@@ -22,13 +22,13 @@ const routes: Array<RouteRecordRaw> = [
         path: '/admin',
         name: 'admin',
         component: () => import('@/views/Admin.vue'),
-        meta: { requiresAuth: true }
+        meta: { requiresAuth: true, next: 'admin' }
     },
     {
         path: '/admin/:passport',
         name: 'edit-passport',
         component: () => import('@/views/admin/EditPassport.vue'),
-        meta: { requiresAuth: true }
+        meta: { requiresAuth: true, next: 'edit-passport' }
     }
 ]
 
@@ -40,7 +40,11 @@ const router = createRouter({
 router.beforeEach((to) => {
     if (to?.meta?.requiresAuth && !TokenService.getLocalAccessToken()) {
         return {
-            path: '/login'
+            name: 'login',
+            params: {
+                next: to?.meta?.next as string || '',
+                ...(to?.params || {})
+            }
         }
     }
 })
