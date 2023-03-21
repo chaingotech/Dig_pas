@@ -33,13 +33,14 @@
               </div>
               <div class="d-flex flex-row align-items-center">
                 <div class="d-flex align-items-center mr-2">
-                  <router-link
+                  <a
                     type="button"
                     class="btn btn-sm btn-primary mr-3"
-                    :to="{ name: 'passport', params: { passport: item.id } }"
+                    :href="getItemHref(item.id)"
+                    target="_blank"
                   >
                     View
-                  </router-link>
+                  </a>
                   <button
                     type="button"
                     class="btn btn-sm btn-icon btn-outline-primary mr-3"
@@ -96,6 +97,10 @@ const removeItem = async (id: string): Promise<void> => {
   removingItemId.value = true
   await store.dispatch('admin/removeItem', id)
   removingItemId.value = false
+}
+
+const getItemHref = (id: string): string => {
+  return window.location.origin + `/${id}`
 }
 
 </script>

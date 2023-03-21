@@ -30,24 +30,30 @@
   height: 300px;
   max-height: 300px;
   padding: 0 16px;
-  background: white;
+  background: #eaeaea;
   position: relative;
   overflow: hidden;
+  isolation: isolate;
   // box-shadow: 0 0 0 1px inset rgba(0,0,0,.11);
   &__logout {
     right: 16px;
     top: 16px;
     position: absolute;
+    z-index: 2;
   }
   &__image {
-    max-height: 368px;
-    margin-left: 200px;
-    transform: translateY(-14px);
+    position: absolute;
+    right: -130px;
+    top: -268px;
+    // max-height: 368px;
+    // margin-left: 200px;
+    // transform: translateY(-14px);
   }
   .container {
     max-height: 100%;
   }
   &__main {
+    z-index: 1;
     display: flex;
     flex-direction: column;
     h1 {
