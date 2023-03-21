@@ -63,18 +63,18 @@ const AdminModule = {
     },
 
     async getPassportPublic ({ commit }: any, id: string) {
-      try {
-        const { data } = await AdminService.getPassportPublic(id)
-        const passport = data?.attributes?.customAttributes || {}
-        commit('setPassport', {
-          ...getDefaultPassportData(),
-          ...passport
-        })
-      } catch (err) {
-        console.error(err)
+      if (id === 'default') {
         const passport = getDefaultPassportData()
         commit('setPassport', passport)
+        return
       }
+      const { data } = await AdminService.getPassportPublic(id)
+        .catch(() => Promise.reject('Not found'))
+      const passport = data?.attributes?.customAttributes || {}
+      commit('setPassport', {
+        ...getDefaultPassportData(),
+        ...passport
+      })
     },
 
     async fetchItems ({ commit }: any) {

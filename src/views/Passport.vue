@@ -4,8 +4,9 @@
       :name="passport.name"
       :model="passport.model"
       :modelType="passport.modelType"
+      :notFound="notFound"
     />
-    <template v-if="!loading">
+    <template v-if="!loading && !notFound">
 
       <section class="d-flex justify-content-end align-item-end flex-column-sm">
         <div class="text-center align-self-md-end my-5 mr-sm-5">
@@ -157,9 +158,10 @@ import ViewGuitar from "@/components/ViewGuitar.vue"
 import Header from "@/components/Header.vue"
 
 const loading = ref(false)
+const notFound = ref(false)
 const store = useStore()
 
-const passport = computed(() => store.state.admin.passport)
+const passport = computed(() => store.state.admin.passport || {})
 
 const fetchData = async () => {
   const internalInstance = getCurrentInstance();
@@ -168,10 +170,11 @@ const fetchData = async () => {
     internalInstance?.appContext?.config?.globalProperties?.$Progress?.start?.();
     const passportId = useRouteParam('passport')
     console.log(passportId.value)
-    store.dispatch('admin/getPassportPublic', passportId.value)
+    await store.dispatch('admin/getPassportPublic', passportId.value)
     // await new Promise(resolve => setTimeout(resolve))
   } catch (err) {
     console.error(err)
+    notFound.value = true
   } finally {
     internalInstance?.appContext?.config?.globalProperties?.$Progress?.finish?.();
     setTimeout(() => {

@@ -12,7 +12,7 @@
         <div class=" ml-sm-5 d-flex">
           <img alt="" src="@/assets/featured-img.svg" id="featured-img-sm">
 
-          <div class="first_info">
+          <div class="first_info" v-if="!props.notFound">
             <div class="text-white text-light">
               {{ props.modelType || 'Acoustic Guitar - SCCCE' }}
             </div>
@@ -20,44 +20,50 @@
               {{ props.model }}
             </h1>
           </div>
-        </div>
-
-        <div class="ml-sm-5  text-white box-info">
-          <div class="d-flex">
-            <img alt="" src="@/assets/icon/hash-icon.svg" style="width: 28px" class="mr-4">
-
-            <div class="lh1 bold-500">
-                {{ props.name }}
-              <br>
-              <span class="text-light">Passport Blockchain Hash</span>
-            </div>
-            <a
-              class="ml-4 ml-auto"
-              href="https://rinkeby.etherscan.io/tx/0x605bccecbcb9ceeb0ffc3d08d39a38bdae035e41f09a1893a8652dce85fa763d">
-              <img alt="" src="@/assets/icon/arrow-right.svg" style="width: 28px">
-            </a>
+          <div v-else>
+            <h1 class="text-white text-uppercase bold-900 lh1" style="margin-bottom: 300px;">
+              NOT FOUND
+            </h1>
           </div>
         </div>
-        <div class="ml-sm-5  text-white box-info">
-          <div class="d-flex justify-content-between">
-            <img alt="" src="@/assets/icon/shape.svg" style="width: 28px" class="mr-4">
+        <template v-if="!props.notFound">
+          <div class="ml-sm-5  text-white box-info">
+            <div class="d-flex">
+              <img alt="" src="@/assets/icon/hash-icon.svg" style="width: 28px" class="mr-4">
 
-            <div class="lh1 text-bold mr-4">Share with
-              <br>
-              your friends
-            </div>
-            <div class="ml-auto">
-              <a :href="urlFacebook"
-                 onclick="return !window.open(this.href, 'Facebook', 'width=640,height=580')">
-                <img alt="" src="@/assets/social/social-facebook.svg" style="width: 30px" class="mr-2">
-              </a>
-              <a :href="urlTwitter"
-                 onclick="return !window.open(this.href, 'Twitter', 'width=640,height=580')">
-                <img alt="" src="@/assets/social/social-twitter.svg" style="width: 30px" class="mr-2">
+              <div class="lh1 bold-500">
+                  {{ props.name }}
+                <br>
+                <span class="text-light">Passport Blockchain Hash</span>
+              </div>
+              <a
+                class="ml-4 ml-auto"
+                href="https://rinkeby.etherscan.io/tx/0x605bccecbcb9ceeb0ffc3d08d39a38bdae035e41f09a1893a8652dce85fa763d">
+                <img alt="" src="@/assets/icon/arrow-right.svg" style="width: 28px">
               </a>
             </div>
           </div>
-        </div>
+          <div class="ml-sm-5  text-white box-info">
+            <div class="d-flex justify-content-between">
+              <img alt="" src="@/assets/icon/shape.svg" style="width: 28px" class="mr-4">
+
+              <div class="lh1 text-bold mr-4">Share with
+                <br>
+                your friends
+              </div>
+              <div class="ml-auto">
+                <a :href="urlFacebook"
+                  onclick="return !window.open(this.href, 'Facebook', 'width=640,height=580')">
+                  <img alt="" src="@/assets/social/social-facebook.svg" style="width: 30px" class="mr-2">
+                </a>
+                <a :href="urlTwitter"
+                  onclick="return !window.open(this.href, 'Twitter', 'width=640,height=580')">
+                  <img alt="" src="@/assets/social/social-twitter.svg" style="width: 30px" class="mr-2">
+                </a>
+              </div>
+            </div>
+          </div>
+        </template>
       </section>
     </div>
     <img alt="" src="@/assets/featured-img.svg" id="featured-img">
@@ -76,6 +82,7 @@ const props = defineProps<{
   modelType: string;
   model: string;
   name: string;
+  notFound: boolean;
 }>()
 
 const url = 'https://www.google.com'
