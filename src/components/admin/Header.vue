@@ -25,4 +25,9 @@
   background: #fafafa;
   z-index: 2;
 }
+@media print {
+  .admin-page-header {
+    display: none !important;
+  }
+}
 </style>
