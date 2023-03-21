@@ -60,7 +60,7 @@
       font-size: 60px;
     }
     .spacer {
-      height: 72px;
+      height: 54px;
     }
   }
 }
