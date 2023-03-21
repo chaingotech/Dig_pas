@@ -1,5 +1,6 @@
 import axiosInstance, {
-  PASSPORTS_PATH
+  PASSPORTS_PATH,
+  PASSPORTS_PUBLIC_PATH
 } from './api'
 
 class AdminService {
@@ -10,6 +11,11 @@ class AdminService {
 
   getPassport (id: string): Promise<{ data: any }> {
     return axiosInstance.get(`${PASSPORTS_PATH}/${id}`)
+      .then(({ data }) => data)
+  }
+
+  getPassportPublic (id: string): Promise<{ data: any }> {
+    return axiosInstance.get(`${PASSPORTS_PUBLIC_PATH}/${id}`)
       .then(({ data }) => data)
   }
   

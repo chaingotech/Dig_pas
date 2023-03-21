@@ -168,7 +168,7 @@ const fetchData = async () => {
     internalInstance?.appContext?.config?.globalProperties?.$Progress?.start?.();
     const passportId = useRouteParam('passport')
     console.log(passportId.value)
-    store.dispatch('admin/getPassport', passportId.value)
+    store.dispatch('admin/getPassportPublic', passportId.value)
     // await new Promise(resolve => setTimeout(resolve))
   } catch (err) {
     console.error(err)
