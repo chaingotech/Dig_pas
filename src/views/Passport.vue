@@ -153,8 +153,11 @@ import { useStore } from 'vuex'
 import { useRouteParam } from '@/composables'
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import Map from "@/components/Map.vue"
+// @ts-ignore
 import GuitarSide from '@/components/GuitarSide.vue'
+// @ts-ignore
 import ViewGuitar from "@/components/ViewGuitar.vue"
+// @ts-ignore
 import Header from "@/components/Header.vue"
 
 const loading = ref(false)

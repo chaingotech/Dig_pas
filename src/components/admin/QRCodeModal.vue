@@ -1,9 +1,9 @@
 <template>
-  <div class="card qr-code-card bg-white" style="width: 400px; height: 400px">
+  <div class="card qr-code-card bg-white" style="width: 600px; height: 600px">
     <QRCodeVue3
       :value="qrCodeValue"
-      :width="200"
-      :height="200"
+      :width="250"
+      :height="250"
       :qrOptions="{ typeNumber: '0', mode: 'Byte', errorCorrectionLevel: 'Q' }"
       :imageOptions="{ hideBackgroundDots: true, imageSize: 0.4, margin: 0 }"
       :dotsOptions="{ type: 'square', color: '#05004d' }"
@@ -60,7 +60,7 @@ const print = () => {
 
   .qr-code-card {
     border: none;
-    transform: scale(1.5);
+    transform: scale(1.4);
     &__actions {
       display: none;
     }

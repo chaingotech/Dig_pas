@@ -1,13 +1,15 @@
 <template>
-  <Header>
-    <template #actions>
+  <Headline>
+    <template #create>
       <button
         type="button"
-        class="btn btn-primary btn-sm mr-4"
+        class="btn btn-primary"
         @click="createItem"
       >
-        Create new one
+        Create
       </button>
+    </template>
+    <template #logout>
       <button
         type="button"
         class="btn btn-secondary btn-sm"
@@ -16,11 +18,13 @@
         Logout
       </button>
     </template>
-  </Header>
-  <PassportsList
-    @edit="editItem"
-    @generate-qrcode="generateQrCode"
-  />
+  </Headline>
+  <div class="passports-container">
+    <PassportsList
+      @edit="editItem"
+      @generate-qrcode="generateQrCode"
+    />
+  </div>
 </template>
 
 <script lang="ts" setup>
@@ -28,11 +32,12 @@
 import { useRouter } from "vue-router";
 import { useStore } from "vuex";
 import { openModal, closeModal } from "jenesius-vue-modal"
-import Header from "@/components/admin/Header.vue";
+import Headline from "@/components/admin/Headline.vue";
 // @ts-ignore
 import PassportsList from "@/components/admin/PassportsList.vue";
 // @ts-ignore
 import PassportForm from "@/components/admin/PassportForm.vue";
+// @ts-ignore
 import QRCodeModal from "@/components/admin/QRCodeModal.vue";
 
 const store = useStore()
@@ -65,3 +70,11 @@ const logout = () => {
 }
 
 </script>
+
+<style lang="scss">
+.passports-container {
+  min-height: calc(100vh - 300px);
+  background: #fafafa;
+  padding-top: 12px;
+}
+</style>
