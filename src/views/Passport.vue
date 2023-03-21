@@ -169,7 +169,7 @@ const fetchData = async () => {
     loading.value = true
     internalInstance?.appContext?.config?.globalProperties?.$Progress?.start?.();
     const passportId = useRouteParam('passport')
-    console.log(passportId.value)
+
     await store.dispatch('admin/getPassportPublic', passportId.value)
     // await new Promise(resolve => setTimeout(resolve))
   } catch (err) {
@@ -177,9 +177,7 @@ const fetchData = async () => {
     notFound.value = true
   } finally {
     internalInstance?.appContext?.config?.globalProperties?.$Progress?.finish?.();
-    setTimeout(() => {
-      loading.value = false
-    }, 300)
+    loading.value = false
   }
 }
 

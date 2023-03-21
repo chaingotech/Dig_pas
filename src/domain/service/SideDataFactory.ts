@@ -2,7 +2,6 @@ import SideData from "@/domain/model/SideData";
 
 class SideDataFactory {
   fromJson (data: any): SideData {
-    console.log('data from json', { data })
     const sideData = {
       partName: data?.partName,
       partImage: data?.img,

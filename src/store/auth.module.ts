@@ -24,9 +24,7 @@ const AuthModule = {
   state: initialState,
   actions: {
     async login ({ commit }: any, credentials: LoginPayload): Promise<void> {
-      console.log('credentials', credentials)
       const data = await AuthService.login(credentials)
-      console.log('login data', data)
       data?.accessToken && commit('login', data)
     },
     logout({ commit }: any) {

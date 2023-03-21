@@ -49,6 +49,7 @@ const setup = (store: Store<any>): void => {
 
             return axiosInstance(originalConfig);
           } catch (_error) {
+            window.location.href = window.location.origin + '/login'
             return Promise.reject(_error);
           }
         }

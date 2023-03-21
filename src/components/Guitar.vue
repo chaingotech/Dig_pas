@@ -96,8 +96,6 @@ components.map(item => {
 
 convertedComponents = components.map(item => SideDataFactory.fromJson(item))
 
-console.log('convertedComponents', convertedComponents, props.items)
-
 const activeComponent = (item: any): void => {
   emit('itemSelected', item)
   active.value = item == active.value ? null : item

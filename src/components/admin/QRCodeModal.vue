@@ -19,6 +19,6 @@ import QRCodeVue3 from "qrcode-vue3"
 
 const props = defineProps<{ id: string }>()
 const qrCodeValue = computed(() => {
-  return window.location.origin + `${props.id}`
+  return window.location.origin + `/${props.id}`
 })
 </script>
