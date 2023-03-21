@@ -33,7 +33,7 @@
   background: white;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 0 0 1px inset rgba(0,0,0,.11);
+  // box-shadow: 0 0 0 1px inset rgba(0,0,0,.11);
   &__logout {
     right: 16px;
     top: 16px;
@@ -42,7 +42,7 @@
   &__image {
     max-height: 368px;
     margin-left: 200px;
-    transform: translateY(-10px);
+    transform: translateY(-14px);
   }
   .container {
     max-height: 100%;
